@@ -1,4 +1,4 @@
-package SWEA;
+package SWEA.Difficulty_1;
 
 public class Q2072 {
 
