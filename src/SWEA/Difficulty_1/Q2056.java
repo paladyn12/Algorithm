@@ -109,6 +109,7 @@ class Q2056
                     System.out.printf("#%d %s/%s/%s", test_case, yearString, monthString, dayString);
                 }
             }
+
             System.out.println();
 
             /////////////////////////////////////////////////////////////////////////////////////////////
