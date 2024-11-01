@@ -37,7 +37,6 @@ import java.io.FileInputStream;
  */
 class Q1859
 {
-    static int sum = 0;
 
     public static void main(String args[]) throws Exception
     {
@@ -64,59 +63,28 @@ class Q1859
 
             /////////////////////////////////////////////////////////////////////////////////////////////
 
-            sc.nextLine();
-            int N = Integer.parseInt(sc.nextLine());
+            int N = sc.nextInt();
             int[] arr = new int[N];
             for(int i = 0; i < N; i++) {
                 arr[i] = sc.nextInt();
             }
 
-            sum = 0;
-            getArr(arr, 0, arr.length-1);
+            long sum = 0;
 
-            System.out.printf("#%d %d", test_case, sum);
-            System.out.println();
+            int maxPrice = arr[N-1];
+            for(int i = N - 2; i >= 0; i--) {
+                if(arr[i] < maxPrice) {
+                    sum += maxPrice - arr[i];
+                } else {
+                    maxPrice = arr[i];
+                }
+            }
+
+            System.out.printf("#%d %d%n", test_case, sum);
 
             /////////////////////////////////////////////////////////////////////////////////////////////
 
         }
-    }
-
-    public static int getArr(int[] arr, int start, int end) {
-
-        if(start == end) {
-            return 0;
-        }
-        int max = arr[start];
-        int idx = start;
-
-        for(int i=start+1; i<=end; i++) {
-            if(arr[i] > max) {
-                max = arr[i];
-                idx = i;    //2
-            }
-        }
-
-        if(idx == start) {
-            return getArr(arr, start+1, end);
-        } else if (idx == end) {
-            // start 부터 end까지 다 더하고 (end-start+1)*arr[end]에서 뺀 값을 sum에 더함
-            int tempSum = 0;
-            for(int i=start; i<=end; i++) {
-                tempSum += arr[i];
-            }
-            sum += (end-start+1)*arr[end] - tempSum;
-            return 0;
-        } else {
-            // start 부터 idx까지 다 더하고 (idx-start+1)*arr[idx]에서 뺀 값을 sum에 더함
-            int tempSum = 0;
-            for(int i=start; i<=idx; i++) {
-                tempSum += arr[i];
-            }
-            sum += (idx-start+1)*arr[idx] - tempSum;
-            return getArr(arr, idx+1, end);
-        }
-
     }
 
 }
