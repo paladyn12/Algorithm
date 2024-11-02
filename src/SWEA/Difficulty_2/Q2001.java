@@ -34,7 +34,7 @@ import java.io.FileInputStream;
    사용하는 클래스명이 Solution 이어야 하므로, 가급적 Solution.java 를 사용할 것을 권장합니다.
    이러한 상황에서도 동일하게 java Solution 명령으로 프로그램을 수행해볼 수 있습니다.
  */
-class Q1954
+class Q2001
 {
     public static void main(String args[]) throws Exception
     {
@@ -63,51 +63,35 @@ class Q1954
             /////////////////////////////////////////////////////////////////////////////////////////////
 
             int N = sc.nextInt();
-            int[][] snail = new int[N][N];
-            for(int i = 0; i < N; i++)
+            int[][] flies = new int[N][N];
+            int M = sc.nextInt();
+
+            for(int i = 0; i < N; i++) {
                 for (int j = 0; j < N; j++) {
-                    snail[i][j] = 0;
+                    flies[i][j] = sc.nextInt();
                 }
-            int direction = 1;
-            int temp = 0;
-            int x = 0;
-            int y = 0;
-
-            while(temp < N*N) {
-                temp++;
-                snail[x][y] = temp;
-                if (direction == 1) {
-                    if (y + 1 == N || snail[x][y + 1] != 0) {
-                        direction = 2;
-                    }
-                } else if (direction == 2) {
-                    if (x + 1 == N || snail[x + 1][y] != 0) {
-                        direction = 3;
-                    }
-                } else if (direction == 3) {
-                    if (y - 1 == -1 || snail[x][y - 1] != 0) {
-                        direction = 4;
-                    }
-                } else if (direction == 4) {
-                    if (x - 1 == -1 || snail[x - 1][y] != 0) {
-                        direction = 1;
-                    }
-                }
-                if(direction == 1) y++;
-                else if (direction == 2) x++;
-                else if (direction == 3) y--;
-                else if (direction == 4) x--;
             }
 
-            System.out.println("#" + test_case);
-            for(int[] ints : snail) {
-                for(int num : ints) {
-                    System.out.print(num + " ");
+            int trys = N-M+1;
+
+            long sum = 0;
+            for(int i = 0; i < trys; i++) {
+                for(int j = 0; j < trys; j++) {
+
+                    long tempSum = 0;
+                    for(int x = 0; x < M; x++) {
+                        for(int y = 0; y < M; y++) {
+                            tempSum += flies[i+x][j+y];
+                        }
+                    }
+                    if(tempSum > sum) sum = tempSum;
+
                 }
-                System.out.println();
             }
 
-                /////////////////////////////////////////////////////////////////////////////////////////////
+            System.out.printf("#%d %d\n", test_case, sum);
+
+            /////////////////////////////////////////////////////////////////////////////////////////////
 
         }
     }

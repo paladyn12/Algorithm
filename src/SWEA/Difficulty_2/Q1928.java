@@ -27,6 +27,11 @@ package SWEA.Difficulty_2;
 //System.out.println(var);		       				   // 문자열 1개 출력하는 예제
 //System.out.println(AB);		       				     // long 변수 1개 출력하는 예제
 /////////////////////////////////////////////////////////////////////////////////////////////
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
+
+import java.nio.ByteBuffer;
+import java.util.Base64;
 import java.util.Scanner;
 import java.io.FileInputStream;
 
@@ -34,7 +39,7 @@ import java.io.FileInputStream;
    사용하는 클래스명이 Solution 이어야 하므로, 가급적 Solution.java 를 사용할 것을 권장합니다.
    이러한 상황에서도 동일하게 java Solution 명령으로 프로그램을 수행해볼 수 있습니다.
  */
-class Q1954
+class Q1928
 {
     public static void main(String args[]) throws Exception
     {
@@ -52,63 +57,24 @@ class Q1954
 		 */
         Scanner sc = new Scanner(System.in);
         int T;
-        T=sc.nextInt();
+        T= Integer.parseInt(sc.nextLine());
 		/*
 		   여러 개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
 		*/
 
-        for(int test_case = 1; test_case <= T; test_case++)
-        {
+        for(int test_case = 1; test_case <= T; test_case++) {
 
             /////////////////////////////////////////////////////////////////////////////////////////////
 
-            int N = sc.nextInt();
-            int[][] snail = new int[N][N];
-            for(int i = 0; i < N; i++)
-                for (int j = 0; j < N; j++) {
-                    snail[i][j] = 0;
-                }
-            int direction = 1;
-            int temp = 0;
-            int x = 0;
-            int y = 0;
+            String str = sc.nextLine();
 
-            while(temp < N*N) {
-                temp++;
-                snail[x][y] = temp;
-                if (direction == 1) {
-                    if (y + 1 == N || snail[x][y + 1] != 0) {
-                        direction = 2;
-                    }
-                } else if (direction == 2) {
-                    if (x + 1 == N || snail[x + 1][y] != 0) {
-                        direction = 3;
-                    }
-                } else if (direction == 3) {
-                    if (y - 1 == -1 || snail[x][y - 1] != 0) {
-                        direction = 4;
-                    }
-                } else if (direction == 4) {
-                    if (x - 1 == -1 || snail[x - 1][y] != 0) {
-                        direction = 1;
-                    }
-                }
-                if(direction == 1) y++;
-                else if (direction == 2) x++;
-                else if (direction == 3) y--;
-                else if (direction == 4) x--;
-            }
-
-            System.out.println("#" + test_case);
-            for(int[] ints : snail) {
-                for(int num : ints) {
-                    System.out.print(num + " ");
-                }
-                System.out.println();
-            }
-
-                /////////////////////////////////////////////////////////////////////////////////////////////
-
+            byte[] decode = Base64.getDecoder().decode(str);
+            String string = new String(decode);
+            System.out.printf("#%d %s\n", test_case, string);
         }
+
+            /////////////////////////////////////////////////////////////////////////////////////////////
+
+
     }
 }
