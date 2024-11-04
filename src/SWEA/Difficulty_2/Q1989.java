@@ -34,7 +34,7 @@ import java.io.FileInputStream;
    사용하는 클래스명이 Solution 이어야 하므로, 가급적 Solution.java 를 사용할 것을 권장합니다.
    이러한 상황에서도 동일하게 java Solution 명령으로 프로그램을 수행해볼 수 있습니다.
  */
-class Q1983
+class Q1989
 {
     public static void main(String args[]) throws Exception
     {
@@ -43,61 +43,20 @@ class Q1983
         int T;
         T=sc.nextInt();
 
-
-
         for(int test_case = 1; test_case <= T; test_case++)
         {
 
             /////////////////////////////////////////////////////////////////////////////////////////////
 
-            int N = sc.nextInt();
-            int n = N/10;
-            int K = sc.nextInt()-1;
-
-            double[] scoreNum = new double[N];
-            String[] score = new String[N];
-            for (int i = 0; i < N; i++) {
-                scoreNum[i] = sc.nextInt()*0.35 + sc.nextInt()*0.45 + sc.nextInt()*0.2;
+            String str = sc.next();
+            char[] charArray = str.toCharArray();
+            int check = 0;
+            for (int i = 0; i < str.length(); i++) {
+                if (charArray[i] != charArray[str.length()-i-1]) check++;
             }
 
-            // N 번 반복해 최고점을 찾아 score에 학점을 넣고 -1로 초기화
-            for (int i = 0; i < N; i++) {
-
-                double max = 0.0;
-                int idx = 0;
-
-                for (int j = 0; j < N; j++) {
-                    if (scoreNum[j] >= max) {
-                        idx = j;
-                        max = scoreNum[j];
-                    }
-                }
-
-                scoreNum[idx] = -1;
-                if (i < n) {
-                    score[idx] = "A+";
-                } else if (i < 2*n) {
-                    score[idx] = "A0";
-                } else if (i < 3*n) {
-                    score[idx] = "A-";
-                } else if (i < 4*n) {
-                    score[idx] = "B+";
-                } else if (i < 5*n) {
-                    score[idx] = "B0";
-                } else if (i < 6*n) {
-                    score[idx] = "B-";
-                } else if (i < 7*n) {
-                    score[idx] = "C+";
-                } else if (i < 8*n) {
-                    score[idx] = "C0";
-                } else if (i < 9*n) {
-                    score[idx] = "C-";
-                } else if (i < 10*n) {
-                    score[idx] = "D0";
-                }
-            }
-
-            System.out.printf("#%d %s\n", test_case, score[K]);
+            if (check == 0) System.out.printf("#%d 1\n", test_case);
+            else System.out.printf("#%d 0\n", test_case);
 
             /////////////////////////////////////////////////////////////////////////////////////////////
 
