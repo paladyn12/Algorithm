@@ -54,6 +54,7 @@ class Q5215_X
             System.out.printf("#%d %d\n", test_case, result);
         }
     }
+
     public static int solveProblem(int N, int L, int[][] ingredients, int index, int sumScore, int sumCal) {
         if (sumCal > L) return 0;
         if (index == N) return sumScore;
