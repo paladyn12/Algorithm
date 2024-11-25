@@ -28,7 +28,6 @@ package SWEA.Difficulty_3;
 /////////////////////////////////////////////////////////////////////////////////////////////
 import java.util.Scanner;
 import java.io.FileInputStream;
-
 class Q5215_X
 {
     public static void main(String args[]) throws Exception
