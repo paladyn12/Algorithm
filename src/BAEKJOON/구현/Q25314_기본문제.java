@@ -1,4 +1,4 @@
-package BAEKJOON.기본문제;
+package BAEKJOON.구현;
 
 import java.util.Scanner;
 /**
