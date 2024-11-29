@@ -1,4 +1,4 @@
-package Algorithm.implementation;
+package BAEKJOON.기본문제;
 
 import java.util.Scanner;
 
@@ -8,7 +8,7 @@ import java.util.Scanner;
  * 문제 링크: https://www.acmicpc.net/problem/25304
  * 풀이: sum을 만들어 X와 각 물건의 가격 합이 일치하는지 확인
  */
-class Q25304 {
+class Q25304_기본문제 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int X = sc.nextInt();
