@@ -1,4 +1,4 @@
-package BAEKJOON.구현;
+package BAEKJOON.구현.일반;
 
 import java.io.BufferedReader;
 import java.io.IOException;
