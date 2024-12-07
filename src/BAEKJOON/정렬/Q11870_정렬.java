@@ -26,7 +26,6 @@ class Q11870_정렬 {
         for (int i : nums) {
             set.add(i);
         }
-
         Object[] array = set.toArray();
         Arrays.sort(array);
         HashMap<Integer, Integer> map = new HashMap();
