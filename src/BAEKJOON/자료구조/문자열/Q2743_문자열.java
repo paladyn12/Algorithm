@@ -1,26 +1,21 @@
-package BAEKJOON.문자열;
+package BAEKJOON.자료구조.문자열;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
 /**
- * 문제 번호: 11718
- * 문제 이름: 그대로 출력하기
- * 문제 링크: https://www.acmicpc.net/problem/11718
- * 풀이: 다음 문자열이 없을 때 null을 반환하도록 while문 작성
+ * 문제 번호: 2743
+ * 문제 이름: 단어 길이 재기
+ * 문제 링크: https://www.acmicpc.net/problem/2743
+ * 풀이: length() 사용
  */
-class Q11718_문자열 {
+class Q2743_문자열 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        StringBuilder sb = new StringBuilder();
-        String line;
-        while ((line = br.readLine()) != null) {
-            sb.append(line).append("\n");
-        }
+        String str = br.readLine();
+        System.out.println(str.length());
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        System.out.println(sb);
         br.close();
     }
 }

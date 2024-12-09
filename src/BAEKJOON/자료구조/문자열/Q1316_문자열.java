@@ -1,9 +1,8 @@
-package BAEKJOON.문자열;
+package BAEKJOON.자료구조.문자열;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashSet;
 
 /**

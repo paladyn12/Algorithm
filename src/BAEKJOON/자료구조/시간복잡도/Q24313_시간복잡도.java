@@ -1,4 +1,4 @@
-package BAEKJOON.시간복잡도;
+package BAEKJOON.자료구조.시간복잡도;
 
 import java.io.*;
 import java.util.StringTokenizer;
