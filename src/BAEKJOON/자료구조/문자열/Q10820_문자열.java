@@ -1,4 +1,7 @@
+package BAEKJOON.자료구조.문자열;
+
 import java.io.*;
+
 /**
  * 문제 번호: 10820
  * 문제 이름: 문자열 분석
@@ -7,7 +10,7 @@ import java.io.*;
  * ctrl+D로 종료
  * 문자가 소문자, 대문자, 숫자, 공백일 때 count할 index를 logic 메서드로 구현
  */
-class Main {
+class Q10820_문자열 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
