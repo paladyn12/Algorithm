@@ -1,3 +1,5 @@
+package BAEKJOON.구현.수학;
+
 import java.io.*;
 import java.util.StringTokenizer;
 
@@ -7,7 +9,7 @@ import java.util.StringTokenizer;
  * 문제 링크: https://www.acmicpc.net/problem/11576
  * 풀이: 10진법으로 먼저 변환 후 B 진법으로 변환
  */
-class Main {
+class Q11576_수학 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
