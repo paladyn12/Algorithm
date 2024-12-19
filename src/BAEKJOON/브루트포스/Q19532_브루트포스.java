@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 19532
  * 문제 이름: 수학은 비대면강의입니다
- * 문제 링크: https://www.acmicpc.net/problem/19532
  * 풀이: a, b, c, d, e, f에 대해 수식 생성
  * 모든 x, y 쌍을 검사
  */

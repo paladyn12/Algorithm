@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 /**
  * 문제 번호: 25083
  * 문제 이름: 새싹
- * 문제 링크: https://www.acmicpc.net/problem/25083
  * 풀이: sb에 새싹 문자열을 append
  */
 class Q25083 {

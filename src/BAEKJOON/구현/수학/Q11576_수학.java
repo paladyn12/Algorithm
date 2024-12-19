@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 11576
  * 문제 이름: Base Conversion
- * 문제 링크: https://www.acmicpc.net/problem/11576
  * 풀이: 10진법으로 먼저 변환 후 B 진법으로 변환
  */
 class Q11576_수학 {

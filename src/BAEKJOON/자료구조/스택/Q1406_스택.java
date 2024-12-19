@@ -6,7 +6,6 @@ import java.util.ArrayDeque;
 /**
  * 문제 번호: 1406
  * 문제 이름: 에디터
- * 문제 링크: https://www.acmicpc.net/problem/1406
  * 풀이: 커서를 기준으로 왼쪽 Stack, 오른쪽 Stack으로 나눠 커서의 이동을 양 Stack의 값 교환으로 구현
  */
 class Q1406_스택 {

@@ -6,7 +6,6 @@ import java.util.ArrayDeque;
 /**
  * 문제 번호: 1918
  * 문제 이름: 후위 표기식
- * 문제 링크: https://www.acmicpc.net/problem/1918
  * 풀이: 피연산자는 바로 출력하고 연산자는 stack
  * top보다 낮은 우선순위의 연산자가 들어오면 같은 우선순위 연산자 나올 때 까지 pop
  * ) 나오면 ( 나올 때 까지 pop

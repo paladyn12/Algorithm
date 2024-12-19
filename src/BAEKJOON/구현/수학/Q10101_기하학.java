@@ -4,7 +4,6 @@ import java.io.*;
 /**
  * 문제 번호: 10101
  * 문제 이름: 삼각형 외우기
- * 문제 링크: https://www.acmicpc.net/problem/10101
  * 풀이: 조건에 따라 값 출력
  */
 class Q10101_기하학 {

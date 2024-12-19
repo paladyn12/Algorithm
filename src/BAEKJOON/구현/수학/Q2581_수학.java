@@ -5,7 +5,6 @@ import java.io.*;
 /**
  * 문제 번호: 2581
  * 문제 이름: 소수
- * 문제 링크: https://www.acmicpc.net/problem/2581
  * 풀이: N까지의 소수값을 미리 저장하고 N부터 M까지 역순으로 소수를 찾음
  */
 class Q2581_수학 {

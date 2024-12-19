@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 2738
  * 문제 이름: 행렬 덧셈
- * 문제 링크: https://www.acmicpc.net/problem/2738
  * 풀이: 각 행렬의 값을 더할 이차원 배열을 생성
  */
 class Q2738_이차원배열 {

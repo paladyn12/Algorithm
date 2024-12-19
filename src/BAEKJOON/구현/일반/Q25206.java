@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 25206
  * 문제 이름: 너의 평점은
- * 문제 링크: https://www.acmicpc.net/problem/25206
  * 풀이: 각 줄 별로 학점과 등급을 따로 카운트하여 최종 결과 계산
  */
 class Q25206 {

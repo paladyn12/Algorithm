@@ -7,7 +7,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 10814
  * 문제 이름: 나이순 정렬
- * 문제 링크: https://www.acmicpc.net/problem/10814
  * 풀이: Comparable을 구현한 Person 배열에 Arrays.sort()
  */
 class Q10814_정렬 {

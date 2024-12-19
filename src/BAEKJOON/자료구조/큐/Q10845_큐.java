@@ -6,7 +6,6 @@ import java.util.ArrayList;
 /**
  * 문제 번호: 10845
  * 문제 이름: 큐
- * 문제 링크: https://www.acmicpc.net/problem/10845
  * 풀이: 큐 구현
  */
 class Q10845_큐 {

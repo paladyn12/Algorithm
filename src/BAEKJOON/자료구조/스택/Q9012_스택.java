@@ -4,7 +4,6 @@ import java.io.*;
 /**
  * 문제 번호: 9012
  * 문제 이름: 괄호
- * 문제 링크: https://www.acmicpc.net/problem/9012
  * 풀이: 괄호 열기를 +1, 닫기를 -1로 하여 최종 값이 0이 아니거나 연산 중 음수가 되면 false
  */
 class Q9012_스택 {

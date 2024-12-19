@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 10811
  * 문제 이름: 바구니 뒤집기
- * 문제 링크: https://www.acmicpc.net/problem/10811
  * 풀이: 역순으로 만드는 함수를 구현하여 각 범위마다 함수 호출
  */
 class Q10811_일차원배열 {

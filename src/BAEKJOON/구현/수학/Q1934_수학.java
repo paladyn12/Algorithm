@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 1934
  * 문제 이름: 최소공배수
- * 문제 링크: https://www.acmicpc.net/problem/1934
  * 풀이: GCD를 구해 sb에 담아 출력
  */
 class Q1934_수학 {

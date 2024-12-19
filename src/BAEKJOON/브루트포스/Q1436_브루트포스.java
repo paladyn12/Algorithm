@@ -4,7 +4,6 @@ import java.io.*;
 /**
  * 문제 번호: 1436
  * 문제 이름: 영화감독 숌
- * 문제 링크: https://www.acmicpc.net/problem/1436
  * 풀이: n=666부터 수를 증가시키며 666이 들어가면 index 증가
  * index와 입력값이 같아지면 stop
  */

@@ -5,7 +5,6 @@ import java.io.*;
 /**
  * 문제 번호: 2720
  * 문제 이름: 세탁소 사장 동혁
- * 문제 링크: https://www.acmicpc.net/problem/2720
  * 풀이: 주어진 돈을 25, 10, 5, 1로 나눈 값을 반환
  */
 class Q2720_수학 {

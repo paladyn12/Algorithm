@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 5086
  * 문제 이름: 배수와 약수
- * 문제 링크: https://www.acmicpc.net/problem/5086
  * 풀이: 앞 수가 더 작을 때, 뒷 수 % 앞 수 == 0 이면 factor
  * 앞 수가 더 클 때, 앞 수 % 뒷 수 == 0 일 때 multiple
  */

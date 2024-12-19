@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 /**
  * 문제 번호: 10798
  * 문제 이름: 세로읽기
- * 문제 링크: https://www.acmicpc.net/problem/10798
  * 풀이: char[5][15] 배열을 만들어 ''로 초기화
  * 각 줄의 입력을 받아 char 배열을 채우고 세로로 읽으며 문자열을 더함
  */

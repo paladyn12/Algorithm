@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 1085
  * 문제 이름: 직사각형에서 탈출
- * 문제 링크: https://www.acmicpc.net/problem/1085
  * 풀이: x, y, w-x, h-y의 최솟값
  */
 class Q1085_기하학 {

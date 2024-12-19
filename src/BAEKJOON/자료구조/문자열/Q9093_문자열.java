@@ -4,7 +4,6 @@ import java.io.*;
 /**
  * 문제 번호: 9093
  * 문제 이름: 단어 뒤집기
- * 문제 링크: https://www.acmicpc.net/problem/9093
  * 풀이: 입력 문자열을 공백 단위로 분류하여 각 단어별로 뒤집기
  */
 class Q9093_문자열 {

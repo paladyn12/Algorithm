@@ -8,7 +8,6 @@ import java.util.*;
 /**
  * 문제 번호: 11005
  * 문제 이름: 진법 변환 2
- * 문제 링크: https://www.acmicpc.net/problem/11005
  * 풀이: 10진수를 Base로 나누며 각 자릿수를 구하고 이를 문자화
  */
 class Q11005_수학 {

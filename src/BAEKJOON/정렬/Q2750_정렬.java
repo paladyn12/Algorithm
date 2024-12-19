@@ -4,7 +4,6 @@ import java.io.*;
 /**
  * 문제 번호: 2750
  * 문제 이름: 수 정렬하기
- * 문제 링크: https://www.acmicpc.net/problem/2750
  * 풀이: 버블정렬, 선택정렬, 삽입정렬
  */
 class Q2750_정렬 {

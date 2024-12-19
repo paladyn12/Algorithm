@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 3009
  * 문제 이름: 네 번째 점
- * 문제 링크: https://www.acmicpc.net/problem/3009
  * 풀이: 입력된 값 중 1번만 나온 x, y 값을 반환
  */
 class Q3009_기하학 {

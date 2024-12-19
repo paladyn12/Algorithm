@@ -7,7 +7,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 17298
  * 문제 이름: 오큰수
- * 문제 링크: https://www.acmicpc.net/problem/17298
  * 풀이: 뒤에서부터 값을 조회하며
  * stack의 top보다 값이 작으면 stack에 저장
  * stack의 모든 값 보다 값이 크면 stack을 비우고 값 저장

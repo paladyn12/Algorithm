@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 2798
  * 문제 이름: 블랙잭
- * 문제 링크: https://www.acmicpc.net/problem/2798
  * 풀이: 주어진 N개의 수를 배열에 저장하고 1~n-2번째를 i, i~n-1번째를 j, j~n번째를 k로 두고 합 계산
  */
 class Q2798_브루트포스 {

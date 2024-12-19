@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 /**
  * 문제 번호: 1212
  * 문제 이름: 8진수 2진수
- * 문제 링크: https://www.acmicpc.net/problem/1212
  * 풀이: 각 자릿수를 2진수로 변환하여 SB에 더함
  */
 class Q1212_수학 {

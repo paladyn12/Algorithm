@@ -6,7 +6,6 @@ import java.util.Arrays;
 /**
  * 문제 번호: 6588
  * 문제 이름: 골드바흐의 추측
- * 문제 링크: https://www.acmicpc.net/problem/6588
  * 풀이: 각 수를 3, n-3 먼저 검사, 두 수가 소수가 아니면 각 수에 +2, -2
  */
 class Q6588_수학 {

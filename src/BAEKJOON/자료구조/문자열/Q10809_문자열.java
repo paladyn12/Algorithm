@@ -5,7 +5,6 @@ import java.io.*;
 /**
  * 문제 번호: 10809
  * 문제 이름: 알파벳 찾기
- * 문제 링크: https://www.acmicpc.net/problem/10809
  * 풀이: 각 문자열이 나왔는지를 count[]로 확인
  * count[]의 값이 -1이면 처음 나온 것 이므로 해당 값에 index 저장
  */

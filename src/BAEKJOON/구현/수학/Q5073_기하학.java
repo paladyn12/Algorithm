@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 5073
  * 문제 이름: 삼각형과 세 변
- * 문제 링크: https://www.acmicpc.net/problem/5073
  * 풀이: 0 0 0이 입력되기 전 까지 while
  * 가장 긴 변의 길이를 추출해 조건 확인
  */

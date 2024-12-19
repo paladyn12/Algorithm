@@ -4,7 +4,6 @@ import java.io.*;
 /**
  * 문제 번호: 27323
  * 문제 이름: 직사각형
- * 문제 링크: https://www.acmicpc.net/problem/27323
  * 풀이: A*B
  */
 class Q27323_기하학 {

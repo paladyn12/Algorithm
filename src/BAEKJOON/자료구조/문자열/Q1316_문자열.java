@@ -8,7 +8,6 @@ import java.util.HashSet;
 /**
  * 문제 번호: 1316
  * 문제 이름: 그룹 단어 체커
- * 문제 링크: https://www.acmicpc.net/problem/1316
  * 풀이: 문자 리스트에 없던 문자를 만나면 계속 이어지는 동안 넣지 않고 끊겼을 때 넣음
  */
 class Q1316_문자열 {

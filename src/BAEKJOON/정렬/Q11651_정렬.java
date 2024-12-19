@@ -7,7 +7,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 11651
  * 문제 이름: 좌표 정렬하기 2
- * 문제 링크: https://www.acmicpc.net/problem/11651
  * 풀이: 위치가 같은 두 점이 없으므로 카운팅 정렬
  */
 class Q11651_정렬 {

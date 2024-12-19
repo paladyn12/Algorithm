@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 2004
  * 문제 이름: 조합 0의 개수
- * 문제 링크: https://www.acmicpc.net/problem/2004
  * 풀이: nCm 에서 곱하는 수와 나누는 수에서 2와 5만 연산을 수행해 0 개수 찾기
  */
 class Q2004_수학 {

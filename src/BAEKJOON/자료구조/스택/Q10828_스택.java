@@ -6,7 +6,6 @@ import java.util.ArrayList;
 /**
  * 문제 번호: 10828
  * 문제 이름: 스택
- * 문제 링크: https://www.acmicpc.net/problem/10828
  * 풀이: 스택 구현
  */
 class Q10828_스택 {

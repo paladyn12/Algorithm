@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 9613
  * 문제 이름: GCD 합
- * 문제 링크: https://www.acmicpc.net/problem/9613
  * 풀이: 각 숫자를 배열에 담아 모든 조합에 대해 GCD 연산 수행
  */
 class Q9613_수학 {

@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 /**
  * 문제 번호: 1676
  * 문제 이름: 팩토리얼 0의 개수
- * 문제 링크: https://www.acmicpc.net/problem/1676
  * 풀이: 5가 곱해지는 개수를 구함
  */
 class Q1676_수학 {

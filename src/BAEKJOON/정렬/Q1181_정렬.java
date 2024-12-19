@@ -6,7 +6,6 @@ import java.util.Arrays;
 /**
  * 문제 번호: 1181
  * 문제 이름: 단어 정렬
- * 문제 링크: https://www.acmicpc.net/problem/1181
  * 풀이: 단어들을 String[] 배열에 넣어 길이를 기준으로 sort
  */
 class Q1181_정렬 {

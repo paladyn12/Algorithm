@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 1978
  * 문제 이름: 소수 찾기
- * 문제 링크: https://www.acmicpc.net/problem/1978
  * 풀이: 소수 판별 메서드를 만들어 각 수에 적용
  */
 class Q1978_수학 {

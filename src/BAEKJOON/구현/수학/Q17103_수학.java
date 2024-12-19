@@ -6,7 +6,6 @@ import java.util.Arrays;
 /**
  * 문제 번호: 17103
  * 문제 이름: 골드바흐 파티션
- * 문제 링크: https://www.acmicpc.net/problem/17103
  * 풀이: 소수 판별을 위해 배열을 미리 만들고 골드바흐 추측의 소수 판열에 사용
  */
 class Q17103_수학 {

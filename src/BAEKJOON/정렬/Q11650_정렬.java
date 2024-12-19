@@ -7,7 +7,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 11650
  * 문제 이름: 좌표 정렬하기
- * 문제 링크: https://www.acmicpc.net/problem/11650
  * 풀이: Comparator를 구현한 Point 클래스를 만들어 sort
  */
 class Q11650_정렬 {

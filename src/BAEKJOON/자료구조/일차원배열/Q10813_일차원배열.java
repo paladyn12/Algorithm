@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 10813
  * 문제 이름: 공 바꾸기
- * 문제 링크: https://www.acmicpc.net/problem/10813
  * 풀이: int[]와 index 둘을 입력받아 값을 바꾸는 함수를 만들어 구현
  */
 class Q10813_일차원배열 {

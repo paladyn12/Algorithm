@@ -7,7 +7,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 14215
  * 문제 이름: 세 막대
- * 문제 링크: https://www.acmicpc.net/problem/14215
  * 풀이: a,b,c를 입력받아 가장 큰 수를 찾음
  * 가장 큰 수 < 나머지 합 이면 바로 총 합 계산
  * 아니면 가장 큰 수 < 나머지 합 일 때까지 가장 큰 수를 줄여 합 계산

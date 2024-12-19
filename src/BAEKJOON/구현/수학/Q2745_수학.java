@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 2745
  * 문제 이름: 진법 변환
- * 문제 링크: https://www.acmicpc.net/problem/2745
  * 풀이: 각 자릿수에 대해 진법*자릿수를 더함
  */
 class Q2745_수학 {

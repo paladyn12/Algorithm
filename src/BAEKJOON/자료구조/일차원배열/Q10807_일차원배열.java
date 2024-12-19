@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 /**
  * 문제 번호: 10807
  * 문제 이름: 개수 세기
- * 문제 링크: https://www.acmicpc.net/problem/10807
  * 풀이: 찾으려는 정수를 저장해 같은 값이 나올 때마다 count++
  */
 class Q10807_일차원배열 {

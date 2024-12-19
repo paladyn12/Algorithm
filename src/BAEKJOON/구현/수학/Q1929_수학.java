@@ -7,7 +7,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 1929
  * 문제 이름: 소수 구하기
- * 문제 링크: https://www.acmicpc.net/problem/1929
  * 풀이: 범위 내 자연수에 대해 isPrime이 true이면 출력
  */
 class Q1929_수학 {

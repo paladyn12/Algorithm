@@ -4,7 +4,6 @@ import java.io.*;
 /**
  * 문제 번호: 2903
  * 문제 이름: 중앙 이동 알고리즘
- * 문제 링크: https://www.acmicpc.net/problem/2903
  * 풀이: 입력값 N에 대해 각 줄의 상자 수를 구해 한 변의 점 수를 찾아 제곱
  */
 class Q2903_수학 {

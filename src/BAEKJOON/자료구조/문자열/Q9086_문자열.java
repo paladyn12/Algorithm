@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 /**
  * 문제 번호: 9086
  * 문제 이름: 문자열
- * 문제 링크: https://www.acmicpc.net/problem/9086
  * 풀이: charAt(0)과 charAt(length-1)
  */
 class Q9086_문자열 {

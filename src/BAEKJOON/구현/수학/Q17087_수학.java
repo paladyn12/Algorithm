@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 17087
  * 문제 이름: 숨바꼭질 6
- * 문제 링크: https://www.acmicpc.net/problem/17087
  * 풀이: 배열에 현 지점으로부터 떨어진 거리를 저장하여 전체 원소의 최대공약수 계산
  */
 class Q17087_수학 {

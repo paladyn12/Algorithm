@@ -7,7 +7,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 17299
  * 문제 이름: 오등큰수
- * 문제 링크: https://www.acmicpc.net/problem/17299
  * 풀이: 수의 빈도를 계산하여 각 수의 빈도를 오큰수 문제처럼 비교
  * 단, 비교 후 값 저장 시 빈도가 아닌 빈도를 체크한 값을 저장
  */

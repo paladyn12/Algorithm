@@ -5,7 +5,6 @@ import java.io.*;
 /**
  * 문제 번호: 10808
  * 문제 이름: 알파벳 개수
- * 문제 링크: https://www.acmicpc.net/problem/10808
  * 풀이: count 배열에 ch-'a'++
  */
 class Q10808_문자열 {

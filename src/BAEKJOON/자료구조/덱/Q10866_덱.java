@@ -6,7 +6,6 @@ import java.util.ArrayList;
 /**
  * 문제 번호: 10866
  * 문제 이름: 덱
- * 문제 링크: https://www.acmicpc.net/problem/10866
  * 풀이: 덱 기능 구현
  */
 class Q10866_덱 {

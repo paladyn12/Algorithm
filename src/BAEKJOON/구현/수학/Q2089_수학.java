@@ -5,7 +5,6 @@ import java.io.*;
 /**
  * 문제 번호: 2089
  * 문제 이름: -2진수
- * 문제 링크: https://www.acmicpc.net/problem/2089
  * 풀이: -2로 나누며 진법 변환
  * 나머지가 -1인 경우 보정
  */

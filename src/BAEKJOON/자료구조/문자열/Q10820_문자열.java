@@ -5,7 +5,6 @@ import java.io.*;
 /**
  * 문제 번호: 10820
  * 문제 이름: 문자열 분석
- * 문제 링크: https://www.acmicpc.net/problem/10820
  * 풀이: while ((string = br.readLine()) != null) 문으로 계속해서 값을 입력받음
  * ctrl+D로 종료
  * 문자가 소문자, 대문자, 숫자, 공백일 때 count할 index를 logic 메서드로 구현

@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 /**
  * 문제 번호: 5597
  * 문제 이름: 과제 안 내신 분..?
- * 문제 링크: https://www.acmicpc.net/problem/5597
  * 풀이: int[30]의 배열을 만들고 이름이 불리면 해당 index++, 최종적으로 0인 값의 index가 답
  */
 class Q5597_일차원배열 {

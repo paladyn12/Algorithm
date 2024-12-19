@@ -6,7 +6,6 @@ import java.util.Arrays;
 /**
  * 문제 번호: 11656
  * 문제 이름: 접미사 배열
- * 문제 링크: https://www.acmicpc.net/problem/11656
  * 풀이: substring으로 문자열을 잘라 배열에 넣고 sort
  */
 class Q11656_일차원배열 {

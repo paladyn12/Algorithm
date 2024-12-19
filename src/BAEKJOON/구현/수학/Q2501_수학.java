@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 2501
  * 문제 이름: 약수 구하기
- * 문제 링크: https://www.acmicpc.net/problem/2501
  * 풀이: K를 입력받아 1부터 약수 비교를 진행하고 K번째 약수이면 stop
  */
 class Q2501_수학 {

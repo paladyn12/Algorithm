@@ -6,7 +6,6 @@ import java.util.ArrayDeque;
 /**
  * 문제 번호: 17413
  * 문제 이름: 단어 뒤집기 2
- * 문제 링크: https://www.acmicpc.net/problem/17413
  * 풀이: <부터 >까지는 문자열을 뒤집지 않는 상태이므로 SB에 바로 넣음
  * 그 외엔 Stack에 넣고 공백이나 <를 만나면 Stack의 값을 꺼내 SB에 넣음
  */

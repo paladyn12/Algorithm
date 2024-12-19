@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 9063
  * 문제 이름: 대지
- * 문제 링크: https://www.acmicpc.net/problem/9063
  * 풀이: 들어오는 최대 최소 x, y값을 저장해 넓이 계산
  */
 class Q9063_기하학 {

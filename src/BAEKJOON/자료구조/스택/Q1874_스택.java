@@ -6,7 +6,6 @@ import java.util.ArrayList;
 /**
  * 문제 번호: 1874
  * 문제 이름: 스택 수열
- * 문제 링크: https://www.acmicpc.net/problem/1874
  * 풀이: 입력값이 stack의 top 보다 큰 경우 전부 더함
  * 더하는 값을 last라는 값을 증가시키며 더해 중복되는 값이 더해지지 않도록 함
  * top보다 작은 수가 입력된 경우 NO 출력

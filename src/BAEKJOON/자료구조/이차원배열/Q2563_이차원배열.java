@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 2563
  * 문제 이름: 색종이
- * 문제 링크: https://www.acmicpc.net/problem/2563
  * 풀이: 이차원 배열을 생성하여 색종이를 올리는 함수인 put() 구현
  */
 class Q2563_이차원배열 {

@@ -5,7 +5,6 @@ import java.io.*;
 /**
  * 문제 번호: 1373
  * 문제 이름: 2진수 8진수
- * 문제 링크: https://www.acmicpc.net/problem/1373
  * 풀이: 3자리씩 끊어 sb에 더함
  */
 class Q1373_수학 {

@@ -7,7 +7,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 1158
  * 문제 이름: 요세푸스 문제
- * 문제 링크: https://www.acmicpc.net/problem/1158
  * 풀이: K 배수만큼 Queue에서 맨 앞의 수를 맨 뒤로 보냄
  */
 class Q1158_큐 {

@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 2566
  * 문제 이름: 최댓값
- * 문제 링크: https://www.acmicpc.net/problem/2566
  * 풀이: 중첩 조건문으로 최댓값을 찾아 i, j 값을 반환
  */
 class Q2566_이차원배열 {

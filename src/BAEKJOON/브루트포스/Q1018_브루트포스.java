@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 1018
  * 문제 이름: 체스판 다시 칠하기
- * 문제 링크: https://www.acmicpc.net/problem/1018
  * 풀이: i : 0~M-8, j : 0~N-8 에 대해 칠해야 하는 정사각형 최솟값
  */
 class Q1018_브루트포스 {

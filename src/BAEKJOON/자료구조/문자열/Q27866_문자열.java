@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 /**
  * 문제 번호: 27866
  * 문제 이름: 문자와 문자열
- * 문제 링크: https://www.acmicpc.net/problem/27866
  * 풀이: charAt() 사용
  */
 class Q27866_문자열 {

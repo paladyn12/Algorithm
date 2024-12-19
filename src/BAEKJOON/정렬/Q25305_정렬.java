@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 25305
  * 문제 이름: 커트라인
- * 문제 링크: https://www.acmicpc.net/problem/25305
  * 풀이: 정렬하여 k번째 점수 반환
  */
 class Q25305_정렬 {

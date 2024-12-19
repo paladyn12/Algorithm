@@ -4,7 +4,6 @@ import java.io.*;
 /**
  * 문제 번호: 11653
  * 문제 이름: 소인수분해
- * 문제 링크: https://www.acmicpc.net/problem/11653
  * 풀이: 2부터 i를 증가시켜 N이 i로 나눠질 때마다 출력
  */
 class Q11653_수학 {

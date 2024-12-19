@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 10810
  * 문제 이름: 공 넣기
- * 문제 링크: https://www.acmicpc.net/problem/10810
  * 풀이: int[N]의 바구니 배열을 만들고 각각의 공 넣는 방식에 따라 배열의 값 조정
  */
 class Q10810_일차원배열 {

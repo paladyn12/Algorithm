@@ -6,7 +6,6 @@ import java.util.Arrays;
 /**
  * 문제 번호: 2587
  * 문제 이름: 대표값2
- * 문제 링크: https://www.acmicpc.net/problem/2587
  * 풀이: sort 후 중앙 인덱스의 값
  */
 class Q2587_정렬 {

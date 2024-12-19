@@ -4,7 +4,6 @@ import java.io.*;
 /**
  * 문제 번호: 2839
  * 문제 이름: 설탕 배달
- * 문제 링크: https://www.acmicpc.net/problem/2839
  * 풀이: while(N이 5 or 10의 배수가 아닐 때) N-=3
  */
 class Q2839_브루트포스 {

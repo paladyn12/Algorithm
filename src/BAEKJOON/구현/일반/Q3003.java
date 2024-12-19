@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 3003
  * 문제 이름: 킹, 퀸, 룩, 비숍, 나이트, 폰
- * 문제 링크: https://www.acmicpc.net/problem/3003
  * 풀이: 값을 입력받고 각각 필요한 값에서 입력 값을 뺌
  */
 class Q3003 {

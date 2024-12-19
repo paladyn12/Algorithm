@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 10430
  * 문제 이름: 나머지
- * 문제 링크: https://www.acmicpc.net/problem/10430
  * 풀이: 주어진 식에 대한 값 계산
  */
 class Q10430_수학 {

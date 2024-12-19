@@ -6,7 +6,6 @@ import java.util.ArrayList;
 /**
  * 문제 번호: 9506
  * 문제 이름: 약수들의 합
- * 문제 링크: https://www.acmicpc.net/problem/9506
  * 풀이: n/2까지 찾은 약수들을 더해 n과 같은지 판별
  */
 class Q9506_수학 {

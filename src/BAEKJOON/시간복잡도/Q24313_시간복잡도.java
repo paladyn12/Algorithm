@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 /**
  * 문제 번호: 24313
  * 문제 이름: 알고리즘 수업 - 점근적 표기 1
- * 문제 링크: https://www.acmicpc.net/problem/24313
  * 풀이: c가 fn의 계수보다 크거나 같아야 하고
  * n0에 대해 c*n0이 f(n0)보다 크거나 같아야함
  */

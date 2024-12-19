@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 /**
  * 문제 번호: 2444
  * 문제 이름: 별 찍기 - 7
- * 문제 링크: https://www.acmicpc.net/problem/2444
  * 풀이: 공백 abs(5-i) 별 9-abs(i2-10)
  */
 class Q2444 {
