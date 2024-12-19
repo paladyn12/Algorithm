@@ -1,4 +1,8 @@
-import java.io.*;
+package BAEKJOON.다이나믹프로그래밍;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
@@ -6,7 +10,7 @@ import java.util.StringTokenizer;
  * 문제 이름: 카드 구매하기
  * 풀이: 점화식을 통해 각 장수에 대한 최대 비용 계산
  */
-class Main {
+class Q11052_다이나믹프로그래밍 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
