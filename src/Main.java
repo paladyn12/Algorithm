@@ -7,7 +7,6 @@ import java.util.StringTokenizer;
  * 풀이: dp[i]를 1로 초기화 (최소한 자기 자신만 있는 수열은 가능)
  * 수열에서 이전 index를 살피며 값이 증가했고 dp값이 더 크다면 dp 초기화
  */
-
 class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
