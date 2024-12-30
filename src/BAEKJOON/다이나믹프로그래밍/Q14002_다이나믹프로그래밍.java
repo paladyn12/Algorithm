@@ -1,3 +1,5 @@
+package BAEKJOON.다이나믹프로그래밍;
+
 import java.io.*;
 import java.util.ArrayDeque;
 import java.util.StringTokenizer;
@@ -7,7 +9,7 @@ import java.util.StringTokenizer;
  * 문제 이름: 가장 긴 증가하는 부분 수열 4
  * 풀이: 부분 수열을 구하기 위해 stack 사용
  */
-class Main {
+class Q14002_다이나믹프로그래밍 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
