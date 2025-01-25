@@ -51,7 +51,7 @@ class Q1918_스택 {
         bw.close();
     }
     public static int priority(char operator){
-        if(operator=='(' || operator==')'){
+        if(operator=='(' || operator==')') {
             return 0;
         } else if (operator == '+' || operator == '-') {
             return 1;
