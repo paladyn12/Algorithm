@@ -12,25 +12,44 @@ class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
         int N = Integer.parseInt(br.readLine());
-        StringBuilder sb = new StringBuilder();
-        if (N == 0) sb.append(0);
-        else {
-            while (N != 0) {
-                if (N % -2 == 0) {
-                    N /= -2;
-                    sb.append(0);
-                } else {
-                    N -= 1;
-                    N /= -2;
-                    sb.append(1);
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int[] nums = new int[N];
+        for (int i = 0; i < N; i++) nums[i] = Integer.parseInt(st.nextToken());
+        int[] dp = new int[N];
+        dp[0] = 1;
+        for (int i = 1; i < N; i++) {
+            dp[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if (nums[j] < nums[i] && dp[i] < dp[j]+1) {
+                    dp[i] = dp[j] + 1;
                 }
             }
         }
-        sb.reverse();
 
-        System.out.println(sb);
+        int max = -1;
+        for (int i : dp) {
+            max = Math.max(i, max);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(max).append("\n");
+
+        int value = max;
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
+        for (int i = N-1; i >= 0; i--) {
+            if (dp[i] == value) {
+                stack.addLast(nums[i]);
+                value--;
+            }
+        }
+
+        while (!stack.isEmpty()) {
+            sb.append(stack.pollLast()).append(" ");
+        }
+
+        bw.write(sb.toString());
+        bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
