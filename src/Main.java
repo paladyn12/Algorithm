@@ -1,6 +1,6 @@
 import java.io.*;
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 /**
  * 문제 번호:
@@ -12,42 +12,26 @@ class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        int N = Integer.parseInt(br.readLine());
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int[] nums = new int[N];
-        for (int i = 0; i < N; i++) nums[i] = Integer.parseInt(st.nextToken());
-        int[] dp = new int[N];
-        dp[0] = 1;
-        for (int i = 1; i < N; i++) {
-            dp[i] = 1;
-            for (int j = 0; j < i; j++) {
-                if (nums[j] < nums[i] && dp[i] < dp[j]+1) {
-                    dp[i] = dp[j] + 1;
-                }
-            }
-        }
 
-        int max = -1;
-        for (int i : dp) {
-            max = Math.max(i, max);
+        int N = Integer.parseInt(br.readLine());
+        int[][] dots = new int[N][2];
+        StringTokenizer st;
+        for (int i = 0; i < N; i++) {
+            st = new StringTokenizer(br.readLine());
+            dots[i][0] = Integer.parseInt(st.nextToken());
+            dots[i][1] = Integer.parseInt(st.nextToken());
         }
+        Arrays.sort(dots, ((o1, o2) -> {
+            if (o1[0] == o2[0]) {
+                return Integer.compare(o1[1], o2[1]);
+            }
+            return Integer.compare(o1[0], o2[0]);
+        }));
 
         StringBuilder sb = new StringBuilder();
-        sb.append(max).append("\n");
-
-        int value = max;
-        ArrayDeque<Integer> stack = new ArrayDeque<>();
-        for (int i = N-1; i >= 0; i--) {
-            if (dp[i] == value) {
-                stack.addLast(nums[i]);
-                value--;
-            }
+        for (int[] dot : dots) {
+            sb.append(dot[0]).append(" ").append(dot[1]).append("\n");
         }
-
-        while (!stack.isEmpty()) {
-            sb.append(stack.pollLast()).append(" ");
-        }
-
         bw.write(sb.toString());
         bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
