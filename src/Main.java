@@ -1,6 +1,5 @@
 import java.io.*;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 /**
  * 문제 번호:
@@ -14,24 +13,25 @@ class Main {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         int N = Integer.parseInt(br.readLine());
-        int[][] dots = new int[N][2];
-        StringTokenizer st;
+        int[] array = new int[N];
+        HashSet<Integer> set = new HashSet<>();
+        StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
-            st = new StringTokenizer(br.readLine());
-            dots[i][0] = Integer.parseInt(st.nextToken());
-            dots[i][1] = Integer.parseInt(st.nextToken());
+            array[i] = Integer.parseInt(st.nextToken());
+            set.add(array[i]);
         }
-        Arrays.sort(dots, ((o1, o2) -> {
-            if (o1[0] == o2[0]) {
-                return Integer.compare(o1[1], o2[1]);
-            }
-            return Integer.compare(o1[0], o2[0]);
-        }));
+        Object[] setArray = set.toArray();
+        Arrays.sort(setArray);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < setArray.length; i++) {
+            map.put((Integer) setArray[i], i);
+        }
 
         StringBuilder sb = new StringBuilder();
-        for (int[] dot : dots) {
-            sb.append(dot[0]).append(" ").append(dot[1]).append("\n");
+        for (int i : array) {
+            sb.append(map.get(i)).append(" ");
         }
+
         bw.write(sb.toString());
         bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
