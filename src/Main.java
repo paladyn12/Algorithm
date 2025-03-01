@@ -12,30 +12,55 @@ class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        int N = Integer.parseInt(br.readLine());
-        int[] array = new int[N];
-        HashSet<Integer> set = new HashSet<>();
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < N; i++) {
-            array[i] = Integer.parseInt(st.nextToken());
-            set.add(array[i]);
-        }
-        Object[] setArray = set.toArray();
-        Arrays.sort(setArray);
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < setArray.length; i++) {
-            map.put((Integer) setArray[i], i);
-        }
+        ArrayDeque<Character> stack = new ArrayDeque<>();
+        String str = br.readLine();
 
         StringBuilder sb = new StringBuilder();
-        for (int i : array) {
-            sb.append(map.get(i)).append(" ");
+
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            switch (c) {
+                case '+' :
+                case '-' :
+                case '*' :
+                case '/' :
+                    while (!stack.isEmpty() && priority(stack.peekLast()) >= priority(c)) {
+                        sb.append(stack.pollLast());
+                    }
+                    stack.addLast(c);
+                    break;
+                case '(' :
+                    stack.addLast('(');
+                    break;
+                case ')' :
+                    while (!stack.isEmpty() && stack.peekLast() != '(') {
+                        sb.append(stack.pollLast());
+                    }
+                    stack.pollLast();
+                    break;
+                default:
+                    sb.append(c);
+            }
+
         }
+
+        while (!stack.isEmpty())
+            sb.append(stack.pollLast());
 
         bw.write(sb.toString());
         bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
+    }
+    public static int priority(char operator){
+        if(operator=='(' || operator==')') {
+            return 0;
+        } else if (operator == '+' || operator == '-') {
+            return 1;
+        } else if (operator == '*' || operator == '/') {
+            return 2;
+        }
+        return -1;
     }
 }
