@@ -7,25 +7,17 @@ import java.util.*;
  * 풀이:
  */
 class Main {
-    static int[] array;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         int N = Integer.parseInt(br.readLine());
-        array = new int[N+1];
-        array[0] = 0;
-        array[1] = 0;
+        long[][] dp = new long[N+1][2];
+        dp[1] = new long[]{0, 1};
         for (int i = 2; i <= N; i++) {
-            if (i % 6 == 0) {
-                array[i] = Math.min(array[i-1], Math.min(array[i/3], array[i/2])) + 1;
-            } else if (i % 3 == 0) {
-                array[i] = Math.min(array[i/3], array[i-1]) + 1;
-            } else if (i % 2 == 0) {
-                array[i] = Math.min(array[i/2], array[i-1]) + 1;
-            } else array[i] = array[i-1] + 1;
+            dp[i][0] = dp[i-1][0] + dp[i-1][1];
+            dp[i][1] = dp[i-1][0];
         }
-
-        System.out.println(array[N]);
+        System.out.println(dp[N][0] + dp[N][1]);
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
     }
