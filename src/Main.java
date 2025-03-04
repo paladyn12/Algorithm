@@ -9,16 +9,28 @@ import java.util.*;
 class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        int N = Integer.parseInt(br.readLine());
-        long[][] dp = new long[N+1][2];
-        dp[1] = new long[]{0, 1};
-        for (int i = 2; i <= N; i++) {
-            dp[i][0] = dp[i-1][0] + dp[i-1][1];
-            dp[i][1] = dp[i-1][0];
+        int test_case = Integer.parseInt(br.readLine());
+        StringBuilder sb = new StringBuilder();
+        while (test_case-- > 0) {
+            int N = Integer.parseInt(br.readLine());
+            int[] dp;
+            if (N <= 3) dp = new int[4];
+            else dp = new int[N + 1];
+            dp[0] = 0;
+            dp[1] = 1;
+            dp[2] = 2;
+            dp[3] = 4;
+            for (int i = 4; i <= N; i++) {
+                dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3];
+            }
+            sb.append(dp[N]).append("\n");
         }
-        System.out.println(dp[N][0] + dp[N][1]);
+        bw.write(sb.toString());
+        bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
+        bw.close();
     }
 }
