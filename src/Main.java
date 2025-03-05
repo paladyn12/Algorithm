@@ -11,26 +11,28 @@ class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        int test_case = Integer.parseInt(br.readLine());
-        StringBuilder sb = new StringBuilder();
-        while (test_case-- > 0) {
-            int N = Integer.parseInt(br.readLine());
-            int[] dp;
-            if (N <= 3) dp = new int[4];
-            else dp = new int[N + 1];
-            dp[0] = 0;
-            dp[1] = 1;
-            dp[2] = 2;
-            dp[3] = 4;
-            for (int i = 4; i <= N; i++) {
-                dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3];
-            }
-            sb.append(dp[N]).append("\n");
-        }
-        bw.write(sb.toString());
-        bw.flush();
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+
+        int five = logic(N, 5) - logic(N-M, 5) - logic(M, 5);
+        int two = logic(N, 2) - logic(N-M, 2) - logic(M, 2);
+
+
+        int result = Math.min(two, five);
+        if (result <= 0) {
+            System.out.println(0);
+        } else System.out.println(result);
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
+    }
+    public static int logic(int n, int d) {
+        int sum = 0;
+        while (n > 0) {
+            sum += n / d;
+            n /= d;
+        }
+        return sum;
     }
 }
