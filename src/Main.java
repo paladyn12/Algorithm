@@ -11,28 +11,26 @@ class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
 
-        int five = logic(N, 5) - logic(N-M, 5) - logic(M, 5);
-        int two = logic(N, 2) - logic(N-M, 2) - logic(M, 2);
+        int X = Integer.parseInt(br.readLine());
+        int[] dp = new int[X+1];
+        dp[0] = 0;
+        dp[1] = 0;
+        for (int i = 2; i <= X; i++) {
+            if (i % 6 == 0) {
+                dp[i] = Math.min(Math.min(dp[i-1], dp[i/2]), dp[i/3]) + 1;
+            } else if (i % 3 == 0) {
+                dp[i] = Math.min(dp[i-1], dp[i/3]) + 1;
+            } else if (i % 2 == 0) {
+                dp[i] = Math.min(dp[i-1], dp[i/2]) + 1;
+            } else {
+                dp[i] = dp[i-1] + 1;
+            }
+        }
 
-
-        int result = Math.min(two, five);
-        if (result <= 0) {
-            System.out.println(0);
-        } else System.out.println(result);
+        System.out.println(dp[X]);
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
-    }
-    public static int logic(int n, int d) {
-        int sum = 0;
-        while (n > 0) {
-            sum += n / d;
-            n /= d;
-        }
-        return sum;
     }
 }
