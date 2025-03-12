@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /**
@@ -9,25 +10,25 @@ import java.util.StringTokenizer;
 class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        int N = Integer.parseInt(br.readLine());
-        int[] pack = new int[N+1];
-        int[] dp = new int[N+1];
+
         StringTokenizer st = new StringTokenizer(br.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        int K = Integer.parseInt(st.nextToken());
+        int[][] dp = new int[N + 1][K + 1];
+        Arrays.fill(dp[0], 1);
+        dp[0][0] = 0;
         for (int i = 1; i <= N; i++) {
-            pack[i] = Integer.parseInt(st.nextToken());
-            dp[i] = pack[i];
-        }
-        dp[0] = 0;
-        dp[1] = pack[1];
-        for (int i = 2; i <= N; i++) {
-            for (int j = 1; j <= i; j++) {
-                dp[i] = Math.min(dp[i], dp[i-j] + pack[j]);
+            for (int j = 1; j <= K; j++) {
+
+                dp[i][j] = (dp[i-1][j] + dp[i][j-1]) % 1000000000;
             }
         }
 
-        System.out.println(dp[N]);
+        System.out.println(dp[N][K]);
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
+        bw.close();
     }
 }
