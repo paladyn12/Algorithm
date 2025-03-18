@@ -12,6 +12,7 @@ class Q9095_다이나믹프로그래밍 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         int test_case = Integer.parseInt(br.readLine());
         StringBuilder sb = new StringBuilder();
         while (test_case-- > 0) {
