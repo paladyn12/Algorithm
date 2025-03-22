@@ -1,17 +1,18 @@
 import java.io.*;
+import java.util.Arrays;
 import java.util.StringTokenizer;
-
 /**
- * 문제 번호: 9663
- * 문제 이름: N-Queen
- * 풀이: 백트래킹 기법을 이용하여 매 호출마다 퀸을 놓지 못하는 위치를 업데이트
+ * 문제 번호: 15657
+ * 문제 이름: N과 M (8)
+ * 풀이: 백트래킹 기본 문제
  */
 class Main {
 
-    static boolean[] visit;
-    static int[] arr;
     static int N;
     static int M;
+    static int[] array;
+    static int[] nums;
+    static boolean[] visit;
     static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
@@ -21,10 +22,18 @@ class Main {
 
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
-        visit = new boolean[N];
         M = Integer.parseInt(st.nextToken());
-        arr = new int[M];
-        dfs(0);
+        array = new int[M];
+        nums = new int[N];
+        visit = new boolean[N];
+
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < N; i++) {
+            nums[i] = Integer.parseInt(st.nextToken());
+        }
+        Arrays.sort(nums);
+
+        dfs(0, 0);
 
         bw.write(sb.toString());
         bw.flush();
@@ -33,29 +42,25 @@ class Main {
         bw.close();
     }
 
-    public static void dfs(int depth) {
+    public static void dfs(int depth, int start) {
 
-        // 재귀 깊이가 M과 같아지면 탐색 과정에서 담았던 배열 출력
         if (depth == M) {
-            for (int val : arr) {
-                sb.append(val).append(" ");
+            for (int i = 0; i < M; i++) {
+                sb.append(array[i]).append(" ");
             }
             sb.append("\n");
             return;
         }
 
-        for (int i = 0; i < N; i++) {
-
-            // 만약 해당 노드(값)을 방문하지 않았으면
-            if (visit[i] == false) {
-                arr[depth] = i + 1;   // 해당 깊이를 index로 하여 i + 1 값 저장
-                dfs(depth + 1);  // 다음 자식 노드 방문을 위해 depth를 1 증가시키며 재귀호출
-
-                // 자식노드 방문이 끝나고 돌아오면 방문노드를 방문하지 않은 상태로 변경
-                visit[i] = false;
-            }
+        for (int i = start; i < N; i++) {
+            array[depth] = nums[i];
+            dfs(depth + 1, i);
+//            if (!visit[i]) {
+//                array[depth] = nums[i];
+//                visit[i] = true;
+//                dfs(depth + 1);
+//            }
+//            visit[i] = false;
         }
-        return;
     }
-
 }
