@@ -2,9 +2,9 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 /**
- * 문제 번호: 15657
- * 문제 이름: N과 M (8)
- * 풀이: 백트래킹 기본 문제
+ * 문제 번호:
+ * 문제 이름:
+ * 풀이:
  */
 class Main {
 
@@ -33,7 +33,7 @@ class Main {
         }
         Arrays.sort(nums);
 
-        dfs(0, 0);
+        dfs(0);
 
         bw.write(sb.toString());
         bw.flush();
@@ -42,7 +42,7 @@ class Main {
         bw.close();
     }
 
-    public static void dfs(int depth, int start) {
+    public static void dfs(int depth) {
 
         if (depth == M) {
             for (int i = 0; i < M; i++) {
@@ -52,9 +52,9 @@ class Main {
             return;
         }
 
-        for (int i = start; i < N; i++) {
+        for (int i = 0; i < N; i++) {
             array[depth] = nums[i];
-            dfs(depth + 1, i);
+            dfs(depth + 1);
 //            if (!visit[i]) {
 //                array[depth] = nums[i];
 //                visit[i] = true;
