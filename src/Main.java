@@ -14,34 +14,16 @@ class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        int test_case = Integer.parseInt(br.readLine());
-        StringTokenizer st;
-        int N;
-        int M;
-        StringBuilder sb = new StringBuilder();
-        while (test_case-- > 0) {
-
-            st = new StringTokenizer(br.readLine());
-            N = Integer.parseInt(st.nextToken());
-            M = Integer.parseInt(st.nextToken());
-
-            long[][] dp = new long[M+1][M+1];
-
-            for (int i = 0; i <= M; i++) {
-                dp[i][0] = 1;
-                dp[i][i] = 1;
-            }
-            for (int i = 2; i <= M; i++) {
-                for (int j = 1; j < i; j++) {
-                    dp[i][j] = dp[i-1][j-1] + dp[i-1][j];
-                }
-            }
-
-            sb.append(dp[M][N]).append("\n");
+        int N = Integer.parseInt(br.readLine());
+        int[][] dp = new int[N+1][3];
+        dp[1] = new int[]{1,1,1};
+        for (int i = 2; i <= N; i++) {
+            dp[i][0] = (dp[i-1][0] + dp[i-1][1] + dp[i-1][2]) % 9901;
+            dp[i][1] = (dp[i-1][0] + dp[i-1][2]) % 9901;
+            dp[i][2] = (dp[i-1][0] + dp[i-1][1]) % 9901;
         }
 
-        bw.write(sb.toString());
-        bw.flush();
+        System.out.println((dp[N][0] + dp[N][1] + dp[N][2]) % 9901);
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
