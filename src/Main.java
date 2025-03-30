@@ -8,32 +8,33 @@ import java.util.StringTokenizer;
  * 풀이:
  */
 class Main {
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        int n = Integer.parseInt(br.readLine());
-        int[] dp = new int[n];
-        int[] array = new int[n];
         StringTokenizer st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < n; i++) {
-            array[i] = Integer.parseInt(st.nextToken());
-        }
-        dp[0] = array[0];
-        for (int i = 1; i < n; i++) {
-            dp[i] = Math.max(array[i], dp[i-1] + array[i]);
-        }
-        int max = Integer.MIN_VALUE;
-        for (int i : dp) {
-            if (i > max) max = i;
+        int E = Integer.parseInt(st.nextToken()) - 1;
+        int S = Integer.parseInt(st.nextToken()) - 1;
+        int M = Integer.parseInt(st.nextToken()) - 1;
+
+        int year = 1;
+        int e = 0;
+        int s = 0;
+        int m = 0;
+        while (true) {
+            if (e == E && s == S && m == M) break;
+
+            e = (e + 1) % 15;
+            s = (s + 1) % 28;
+            m = (m + 1) % 19;
+            year++;
         }
 
-        System.out.println(max);
+        System.out.println(year);
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
     }
-
 }
