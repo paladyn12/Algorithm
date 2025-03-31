@@ -12,27 +12,22 @@ class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int E = Integer.parseInt(st.nextToken()) - 1;
-        int S = Integer.parseInt(st.nextToken()) - 1;
-        int M = Integer.parseInt(st.nextToken()) - 1;
-
-        int year = 1;
-        int e = 0;
-        int s = 0;
-        int m = 0;
-        while (true) {
-            if (e == E && s == S && m == M) break;
-
-            e = (e + 1) % 15;
-            s = (s + 1) % 28;
-            m = (m + 1) % 19;
-            year++;
+        int X = Integer.parseInt(br.readLine());
+        int line = 1;
+        int sum = 1;
+        while (X > sum) {
+            line++;
+            sum += line;
         }
+        int position = X - sum + line;
 
-        System.out.println(year);
+        StringBuilder sb = new StringBuilder();
+        if ((line%2)==1) {
+            sb.append(line - position + 1).append("/").append(position);
+        } else sb.append(position).append("/").append(line - position + 1);
 
+        bw.write(sb.toString());
+        bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
