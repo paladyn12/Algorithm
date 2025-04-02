@@ -1,5 +1,7 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.StringTokenizer;
 
 /**
@@ -8,50 +10,54 @@ import java.util.StringTokenizer;
  * 풀이:
  */
 class Main {
-    static int[] position;
-    static int N;
-    static int count = 0;
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
-        position = new int[N];
+        int[] heights = new int[9];
+        int sum = 0;
+        for (int i = 0; i < 9; i++) {
+            int num = Integer.parseInt(br.readLine());
+            sum += num;
+            heights[i] = num;
+        }
 
-        dfs(0);
-        System.out.println(count);
+        int ex1 = 0;
+        int ex2 = 0;
+        boolean found = false;
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = i+1; j < 9; j++) {
+
+                if (sum - heights[i] - heights[j] == 100) {
+                    ex1 = i;
+                    ex2 = j;
+                    found = true;
+                    break;
+                }
+            }
+            if (found) break;
+        }
+
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            if (i != ex1 && i != ex2) {
+                result.add(heights[i]);
+            }
+        }
+
+        Collections.sort(result);
+        StringBuilder sb = new StringBuilder();
+
+        for (Integer i : result) {
+            sb.append(i).append("\n");
+        }
+
+        bw.write(sb.toString());
         bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
-    }
-
-    public static void dfs(int depth) {
-
-        if (depth == N) {
-            count++;
-            return;
-        }
-
-        for (int i = 0; i < N; i++) {
-            position[depth] = i;
-            if (possibility(depth)) {
-                dfs(depth + 1);
-            }
-
-        }
-    }
-
-    private static boolean possibility(int depth) {
-        for (int i = 0; i < depth; i++) {
-
-            if (position[i] == position[depth]) return false;
-            if (Math.abs(depth - i) == Math.abs(position[depth] - position[i])) return false;
-
-        }
-        return true;
     }
 }
