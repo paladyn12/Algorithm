@@ -1,7 +1,7 @@
-package Algorithm;
+package Algorithm.정렬;
 
 
-public class Comparator구현 {
+public class ComparatorImpl {
     public static class C implements Comparable<Integer> {
 
         int num;
