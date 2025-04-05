@@ -12,52 +12,28 @@ import java.util.StringTokenizer;
 class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        int n = Integer.parseInt(br.readLine());
+        int index = 0;
 
-        int[] heights = new int[9];
-        int sum = 0;
-        for (int i = 0; i < 9; i++) {
-            int num = Integer.parseInt(br.readLine());
-            sum += num;
-            heights[i] = num;
-        }
-
-        int ex1 = 0;
-        int ex2 = 0;
-        boolean found = false;
-
-        for (int i = 0; i < 9; i++) {
-            for (int j = i+1; j < 9; j++) {
-
-                if (sum - heights[i] - heights[j] == 100) {
-                    ex1 = i;
-                    ex2 = j;
-                    found = true;
+        for (int i = 666; true; i++) {
+            int count = 0;
+            int I = i;
+            while (I > 0) {
+                if (I % 10 == 6) count++;
+                else count = 0;
+                I /= 10;
+                if (count == 3) {
+                    index++;
                     break;
                 }
             }
-            if (found) break;
-        }
-
-        ArrayList<Integer> result = new ArrayList<>();
-        for (int i = 0; i < 9; i++) {
-            if (i != ex1 && i != ex2) {
-                result.add(heights[i]);
+            if (index == n) {
+                System.out.println(i);
+                break;
             }
         }
-
-        Collections.sort(result);
-        StringBuilder sb = new StringBuilder();
-
-        for (Integer i : result) {
-            sb.append(i).append("\n");
-        }
-
-        bw.write(sb.toString());
-        bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
-        bw.close();
     }
 }
