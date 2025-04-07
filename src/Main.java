@@ -12,28 +12,20 @@ import java.util.StringTokenizer;
 class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        int n = Integer.parseInt(br.readLine());
-        int index = 0;
 
-        for (int i = 666; true; i++) {
-            int count = 0;
-            int I = i;
-            while (I > 0) {
-                if (I % 10 == 6) count++;
-                else count = 0;
-                I /= 10;
-                if (count == 3) {
-                    index++;
-                    break;
-                }
-            }
-            if (index == n) {
-                System.out.println(i);
-                break;
-            }
+        String s = br.readLine();
+        int L = s.length(); // 120
+        int sum = 0;
+        for (int i = 1; i < L; i++) {
+            sum += (int) (9 * (i * Math.pow(10, i-1)));
         }
+        sum += (int) (L * (Integer.parseInt(s) - Math.pow(10, L - 1) + 1));
+
+        System.out.println(sum);
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
+        bw.close();
     }
 }
