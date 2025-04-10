@@ -1,12 +1,15 @@
+package BAEKJOON.탐색;
+
 import java.io.*;
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.StringTokenizer;
 
 /**
  * 문제 번호: 2178
  * 문제 이름: 미로 탐색
  * 풀이: BFS 알고리즘으로 map[N-1][M-1] 까지 경로 길이를 추적해나감
  */
-class Main {
+class Q2178_BFS {
 
     static int M;
     static int N;

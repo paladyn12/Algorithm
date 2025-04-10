@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class DFS_Stack {
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static int[][] adj; // 2차원 인접행렬
     static boolean[] visited; // 방문 체크
     static ArrayList<Integer> track = new ArrayList<>(); // 이동 궤적 기록용
@@ -28,6 +27,7 @@ public class DFS_Stack {
     }
 
     public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         V = Integer.parseInt(st.nextToken());
         E = Integer.parseInt(st.nextToken());
