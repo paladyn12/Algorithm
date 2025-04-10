@@ -1,12 +1,16 @@
+package BAEKJOON.탐색;
+
 import java.io.*;
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 /**
  * 문제 번호: 1260
  * 문제 이름: DFS와 BFS
  * 풀이:
  */
-class Main {
+class Q1260_DFS_BFS {
 
     static int N;
     static int M;
