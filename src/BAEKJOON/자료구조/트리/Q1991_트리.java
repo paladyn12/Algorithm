@@ -1,5 +1,8 @@
+package BAEKJOON.자료구조.트리;
+
 import java.io.*;
-import java.util.*;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 /**
  * 문제 번호: 1991
@@ -7,7 +10,7 @@ import java.util.*;
  * 풀이: left[] right[]에서 각 인덱스는 노드를 뜻하며 그 노드의 왼쪽, 오른쪽 자식의 정보를 저장
  * 전위, 중위, 후위 순회 순서에 따라 메서드를 재귀 호출하며 값 출력
  */
-class Main {
+class Q1991_트리 {
 
     // 각 노드(알파벳 A~Z)의 왼쪽, 오른쪽 자식을 저장하는 배열 (-1이면 자식 없음)
     static int[] left;
