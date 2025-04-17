@@ -1,5 +1,8 @@
+package BAEKJOON.그리디;
+
 import java.io.*;
-import java.util.*;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 /**
  * 문제 번호: 1931
@@ -8,7 +11,7 @@ import java.util.*;
  * 각 회의의 시작 시간이 저장했던 endTime 보다 크거나 같으면 (이전 회의가 끝난 이후의 회의이면)
  * 그 회의를 시작하는 것으로 가정하여 endTime을 그 회의의 종료 시간으로 초기화
  */
-class Main {
+class Q1931_그리디 {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

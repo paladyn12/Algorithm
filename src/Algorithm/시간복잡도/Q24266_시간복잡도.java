@@ -1,4 +1,4 @@
-package BAEKJOON.시간복잡도;
+package Algorithm.시간복잡도;
 
 import java.io.*;
 /**
