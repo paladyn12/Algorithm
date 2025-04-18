@@ -3,54 +3,54 @@ package GOORM.기초시뮬레이션;
 import java.io.*;
 import java.util.*;
 
+/**
+ * 입력받은 좌표 x, y를 static 변수로 저장
+ * 웅덩이가 있는 곳을 boolean water[][]배열에 true 값으로 저장
+ * 입력이 -2000 부터 시작 되므로 배열 인덱스 접근을 위해 모든 좌표는 +2000, +2000 으로 관리
+ */
+
 class 복제로봇 {
+
+	static boolean[][] water = new boolean[4001][4001];
 	static int x;
 	static int y;
-	
+
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		x = Integer.parseInt(st.nextToken());
-		y = Integer.parseInt(st.nextToken());
+		x = Integer.parseInt(st.nextToken()) + 2000;
+		y = Integer.parseInt(st.nextToken()) + 2000;
 		int N = Integer.parseInt(br.readLine());
-		int[] px = new int[N];
-		int[] py = new int[N];
-		for (int i = 0; i < N; i++) {
+		while (N-- > 0) {
 			st = new StringTokenizer(br.readLine());
-			px[i] = Integer.parseInt(st.nextToken());
-			py[i] = Integer.parseInt(st.nextToken());
+			int xi = Integer.parseInt(st.nextToken()) + 2000;
+			int yi = Integer.parseInt(st.nextToken()) + 2000;
+			water[yi][xi] = true;
 		}
-		
+
 		int Q = Integer.parseInt(br.readLine());
-		String[] LRUDs = br.readLine().split(" ");
+		st = new StringTokenizer(br.readLine());
 		for (int i = 0; i < Q; i++) {
-			String LRUD = LRUDs[i];
-			int next_x = x;
-			int next_y = y;
-			
-			if (LRUD.equals("U")) {
-				next_y = y+1;
-			} else if (LRUD.equals("D")) {
-				next_y = y-1;
-			} else if (LRUD.equals("L")) {
-				next_x = x-1;
-			} else if (LRUD.equals("R")) {
-				next_x = x+1;
-			}
-			
-			boolean flag = true;
-			for (int j = 0; j < N; j++) {
-				if (px[j] == next_x && py[j] == next_y) {
-					flag = false;
+			char LRUD = st.nextToken().charAt(0);
+			switch (LRUD) {
+				case 'L':
+					if (!water[y][x-1]) x -= 1;
 					break;
-				}
-			}
-			if (flag) {
-				x = next_x;
-				y = next_y;
+				case 'R':
+					if (!water[y][x+1]) x += 1;
+
+					break;
+				case 'U':
+					if (!water[y+1][x]) y += 1;
+
+					break;
+				case 'D':
+					if (!water[y-1][x]) y -= 1;
+
+					break;
 			}
 		}
-		
-		System.out.print(x + " " + y);
+
+		System.out.print((x-2000) + " " + (y-2000));
 	}
 }

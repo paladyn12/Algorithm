@@ -12,18 +12,14 @@ class 빵야 {
 		for (int i = 0; i < N; i++) {
 			Hs[i] = Integer.parseInt(st.nextToken());
 		}
-		
+
+		int count = 0; // 0, 1, 2, 3, 0, ...
 		long result = 0;
-		int count = 0;
+
 		for (int i = 0; i < N; i++) {
-			while (count > 0 && Hs[i] > 0) {
-				Hs[i] -= count + 1;
-				count = (count + 1) % 4;
-				result++;
-			}
-			if (Hs[i] <= 0) continue;
 			if (Hs[i] > 10) {
-				result += (Hs[i]/10) * 4;
+				int temp = Hs[i] / 10;
+				result += temp * 4;
 				Hs[i] %= 10;
 			}
 			while (Hs[i] > 0) {
@@ -32,7 +28,6 @@ class 빵야 {
 				result++;
 			}
 		}
-		
 		System.out.print(result);
 	}
 }

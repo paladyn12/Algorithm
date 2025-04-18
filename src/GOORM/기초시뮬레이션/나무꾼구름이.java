@@ -4,10 +4,11 @@ import java.io.*;
 import java.util.*;
 
 class 나무꾼구름이 {
-	static int N;
-	static int M;
-	static int x;
-	static int[] trees;
+
+	static int N; // 나무의 수
+	static int M; // 벌목 가능한 나무 높이
+	static int x; // 현재 위치
+	static int[] trees; // 각 나무의 높이
 	static long sum = 0;
 	
 	public static void main(String[] args) throws Exception {
@@ -27,6 +28,7 @@ class 나무꾼구름이 {
 		for (int i = 0; i < Q; i++) {
 			LSR[i] = st.nextToken().charAt(0);
 		}
+
 		for (char c : LSR) {
 			cut();
 			logic(c);
