@@ -17,9 +17,13 @@ class 복제로봇 {
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		// 초기 좌표 입력
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		x = Integer.parseInt(st.nextToken()) + 2000;
 		y = Integer.parseInt(st.nextToken()) + 2000;
+
+		// 웅덩이가 있는 좌표 true
 		int N = Integer.parseInt(br.readLine());
 		while (N-- > 0) {
 			st = new StringTokenizer(br.readLine());
@@ -28,7 +32,10 @@ class 복제로봇 {
 			water[yi][xi] = true;
 		}
 
+		// L, R, U, D 개수 입력
 		int Q = Integer.parseInt(br.readLine());
+
+		// 입력받은 L, R, U, D를 하나씩 순회하며 처리
 		st = new StringTokenizer(br.readLine());
 		for (int i = 0; i < Q; i++) {
 			char LRUD = st.nextToken().charAt(0);
@@ -38,19 +45,15 @@ class 복제로봇 {
 					break;
 				case 'R':
 					if (!water[y][x+1]) x += 1;
-
 					break;
 				case 'U':
 					if (!water[y+1][x]) y += 1;
-
 					break;
 				case 'D':
 					if (!water[y-1][x]) y -= 1;
-
 					break;
 			}
 		}
-
 		System.out.print((x-2000) + " " + (y-2000));
 	}
 }
