@@ -25,7 +25,6 @@ public class TowerOfHanoi {
 
         // 정답 출력
         System.out.println(sum(poll1) + " " + sum(poll2) + " " + sum(poll3) + " ");
-
     }
 
     static void hanoi(int N, ArrayDeque<Integer> start, ArrayDeque<Integer> goal, ArrayDeque<Integer> via) {
