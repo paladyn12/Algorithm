@@ -20,6 +20,9 @@ class BiggerThanYou {
             A[i] = Integer.parseInt(st.nextToken());
         }
         K = Long.parseLong(br.readLine());
+        // N : 3
+        // A : [3, 5, 7]
+        // K : 777
 
         // 메인 로직
         logic(0);
