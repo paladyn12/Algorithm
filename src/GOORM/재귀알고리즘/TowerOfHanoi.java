@@ -44,9 +44,9 @@ public class TowerOfHanoi {
         if (count == K) {
             return;
         }
-
         move(start, goal);
         count++;
+
         hanoi(N-1, via, goal, start);
     }
 
