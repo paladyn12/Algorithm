@@ -3,7 +3,7 @@ package GOORM.이분탐색;
 import java.io.*;
 import java.util.*;
 
-class Main {
+class 게임마스터 {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
