@@ -1,3 +1,5 @@
+package BAEKJOON.다이나믹프로그래밍;
+
 import java.io.*;
 
 /**
@@ -9,7 +11,7 @@ import java.io.*;
  * dp[i][0] = Math.max(dp[i-2][0], dp[i-2][1]) 를 계산해 현재 계단의 score를 더함
  * dp[i][1] = dp[i-1][0] 에 현재 계단의 score를 더함
  */
-class Main {
+class Q2579_다이나믹프로그래밍 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
