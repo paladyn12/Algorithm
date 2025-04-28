@@ -9,89 +9,56 @@ import java.util.StringTokenizer;
  * 풀이:
  */
 class Main {
-    static int N;
-    static int M;
-    static int V;
-    static int[][] adj;
-    static boolean[] visit;
-    static ArrayList<Integer> track;
-
-    static StringBuilder sb = new StringBuilder();
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
-        V = Integer.parseInt(st.nextToken());
-        adj = new int[N + 1][N + 1];
-        visit = new boolean[N + 1];
-        for (int i = 0; i < M; i++) {
-            st = new StringTokenizer(br.readLine());
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
-            adj[a][b] = 1;
-            adj[b][a] = 1;
+        int N = Integer.parseInt(br.readLine());
+        int wrong = Integer.parseInt(br.readLine());
+        boolean[] error = new boolean[10];
+        if (wrong != 0) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            for (int i = 0; i < wrong; i++) {
+                error[Integer.parseInt(st.nextToken())] = true;
+            }
+        }
+        int result = Math.abs(100 - N);
+
+        for (int i = 0; i <= 999999; i++) {
+
+            boolean next = false;
+            int length = 0;
+            int n = i;
+
+            if (n == 0) {
+                if (!error[0]) {
+                    length = 1;
+                } else {
+                    next = true;
+                }
+            }
+
+            while (n > 0) {
+                if (error[n % 10]) {
+                    next = true;
+                    break;
+                }
+                length++;
+                n /= 10;
+            }
+
+            if (!next) {
+                // 결과 업데이트
+                result = Math.min(result, length + Math.abs(N - i));
+            }
         }
 
-        dfs(V);
-        visit = new boolean[N + 1];
-        bfs(V);
 
+        System.out.println(result);
 
-        bw.write(sb.toString());
-        bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
-    }
-
-    static void dfs(int start) {
-        track = new ArrayList<>();
-        ArrayDeque<Integer> stack = new ArrayDeque<>();
-        stack.addLast(start);
-        while (!stack.isEmpty()) {
-
-            int current = stack.removeLast();
-            if (!visit[current]) {
-                visit[current] = true;
-                track.add(current);
-            }
-            for (int i = N; i > 0; i--) {
-                if (!visit[i] && adj[current][i] == 1) {
-                    stack.addLast(i);
-                }
-            }
-        }
-        for (Integer i : track) {
-            sb.append(i).append(" ");
-        }
-        sb.append("\n");
-    }
-
-    static void bfs(int start) {
-        track = new ArrayList<>();
-        ArrayDeque<Integer> queue = new ArrayDeque<>();
-        queue.addLast(start);
-        while (!queue.isEmpty()) {
-
-            int current = queue.removeFirst();
-            if (!visit[current]) {
-                visit[current] = true;
-                track.add(current);
-            }
-            for (int i = 1; i <= N; i++) {
-                if (!visit[i] && adj[current][i] == 1) {
-                    queue.addLast(i);
-                }
-            }
-        }
-        for (Integer i : track) {
-            sb.append(i).append(" ");
-        }
-        sb.append("\n");
     }
 }
