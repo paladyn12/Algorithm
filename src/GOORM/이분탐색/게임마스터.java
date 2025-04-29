@@ -4,23 +4,36 @@ import java.io.*;
 import java.util.*;
 
 class 게임마스터 {
+
+    static long MAX = (long) Math.pow(10, 12);
+
     public static void main(String[] args) throws Exception {
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         long N = Long.parseLong(st.nextToken());
-        long M = Long.parseLong(st.nextToken()) + 1;
+        long M = Long.parseLong(st.nextToken());
 
-        long left = 1;
-        long right = N;
-        while (left <= right) {
-            long mid = (left + right) / 2;
-            if (mid < M) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
-            }
+        long goalRate = (M * 100) / N + 1;
+
+        if (goalRate >= 100) {
+            System.out.println("X");
+            return;
         }
 
-        System.out.println(left);
+        long left = 0;
+        long right = MAX - 1;
+        long result = -1;
+        while (left <= right) {
+            long mid = (right + left) / 2;
+            long currentRate = ((M + mid) * 100) / (N + mid);
+            if ( currentRate >= goalRate ) {
+                result = mid;
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        System.out.println(result);
     }
 }
