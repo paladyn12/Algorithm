@@ -1,64 +1,63 @@
 import java.io.*;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
+import java.util.Arrays;
 
 /**
- * 문제 번호:
- * 문제 이름:
+ * 문제 번호: 10972
+ * 문제 이름: 다음 순열
  * 풀이:
  */
 class Main {
+
+    static int N;
+    static boolean[] visit;
+    static int[] input;
+    static int[] array;
+
+    static boolean next = false;
+
+    static StringBuilder sb = new StringBuilder();
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        int N = Integer.parseInt(br.readLine());
-        int wrong = Integer.parseInt(br.readLine());
-        boolean[] error = new boolean[10];
-        if (wrong != 0) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            for (int i = 0; i < wrong; i++) {
-                error[Integer.parseInt(st.nextToken())] = true;
-            }
-        }
-        int result = Math.abs(100 - N);
+        N = Integer.parseInt(br.readLine());
+        input = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 
-        for (int i = 0; i <= 999999; i++) {
+        visit = new boolean[N];
+        array = new int[N];
 
-            boolean next = false;
-            int length = 0;
-            int n = i;
+        logic(0);
 
-            if (n == 0) {
-                if (!error[0]) {
-                    length = 1;
-                } else {
-                    next = true;
-                }
-            }
-
-            while (n > 0) {
-                if (error[n % 10]) {
-                    next = true;
-                    break;
-                }
-                length++;
-                n /= 10;
-            }
-
-            if (!next) {
-                // 결과 업데이트
-                result = Math.min(result, length + Math.abs(N - i));
-            }
-        }
-
-
-        System.out.println(result);
+        if (next) System.out.println(-1);
+        else System.out.println(sb);
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
+    }
+
+    static void logic(int depth) {
+        if (depth == N) {
+            if (next) {
+                for (int i : array) {
+                    sb.append(i).append(" ");
+                }
+                next = false;
+            }
+            else {
+                if (Arrays.equals(array, input)) next = true;
+            }
+        }
+
+        for (int i = 0; i < N; i++) {
+            if (!visit[i]) {
+                visit[i] = true;
+                array[depth] = i + 1;
+                logic(depth + 1);
+            }
+        }
+
     }
 }
