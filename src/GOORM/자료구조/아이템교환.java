@@ -3,7 +3,7 @@ package GOORM.자료구조;
 import java.io.*;
 import java.util.*;
 
-class Main {
+class 아이템교환 {
 
     /**
      * 두 item set을 입력받아 서로 item을 가지고 있을 때 교환하는 로직을 작성하는 문제
