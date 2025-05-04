@@ -1,19 +1,21 @@
 import java.io.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.StringTokenizer;
 
 /**
- * 문제 번호: 10972
- * 문제 이름: 다음 순열
+ * 문제 번호:
+ * 문제 이름:
  * 풀이:
  */
 class Main {
-
     static int N;
+    static int M;
+    static int V;
+    static int[][] adj;
     static boolean[] visit;
-    static int[] input;
-    static int[] array;
-
-    static boolean next = false;
+    static ArrayList<Integer> track;
 
     static StringBuilder sb = new StringBuilder();
 
@@ -22,42 +24,75 @@ class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        N = Integer.parseInt(br.readLine());
-        input = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        V = Integer.parseInt(st.nextToken());
+        adj = new int[N + 1][N + 1];
+        visit = new boolean[N + 1];
+        for (int i = 0; i < M; i++) {
+            st = new StringTokenizer(br.readLine());
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+            adj[a][b] = 1;
+            adj[b][a] = 1;
+        }
 
-        visit = new boolean[N];
-        array = new int[N];
+        dfs(V);
+        visit = new boolean[N + 1];
+        bfs(V);
 
-        logic(0);
 
-        if (next) System.out.println(-1);
-        else System.out.println(sb);
-
+        bw.write(sb.toString());
+        bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
     }
 
-    static void logic(int depth) {
-        if (depth == N) {
-            if (next) {
-                for (int i : array) {
-                    sb.append(i).append(" ");
+    static void dfs(int start) {
+        track = new ArrayList<>();
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
+        stack.addLast(start);
+        while (!stack.isEmpty()) {
+
+            int current = stack.removeLast();
+            if (!visit[current]) {
+                visit[current] = true;
+                track.add(current);
+            }
+            for (int i = N; i > 0; i--) {
+                if (!visit[i] && adj[current][i] == 1) {
+                    stack.addLast(i);
                 }
-                next = false;
-            }
-            else {
-                if (Arrays.equals(array, input)) next = true;
             }
         }
+        for (Integer i : track) {
+            sb.append(i).append(" ");
+        }
+        sb.append("\n");
+    }
 
-        for (int i = 0; i < N; i++) {
-            if (!visit[i]) {
-                visit[i] = true;
-                array[depth] = i + 1;
-                logic(depth + 1);
+    static void bfs(int start) {
+        track = new ArrayList<>();
+        ArrayDeque<Integer> queue = new ArrayDeque<>();
+        queue.addLast(start);
+        while (!queue.isEmpty()) {
+
+            int current = queue.removeFirst();
+            if (!visit[current]) {
+                visit[current] = true;
+                track.add(current);
+            }
+            for (int i = 1; i <= N; i++) {
+                if (!visit[i] && adj[current][i] == 1) {
+                    queue.addLast(i);
+                }
             }
         }
-
+        for (Integer i : track) {
+            sb.append(i).append(" ");
+        }
+        sb.append("\n");
     }
 }
