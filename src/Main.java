@@ -9,14 +9,8 @@ import java.util.StringTokenizer;
  * 문제 이름:
  * 풀이:
  */
-class Main {
-    static int N;
-    static int M;
-    static int V;
-    static int[][] adj;
-    static boolean[] visit;
-    static ArrayList<Integer> track;
-
+class Main {static boolean[] visit;
+    static int[] arr;
     static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
@@ -25,23 +19,11 @@ class Main {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         StringTokenizer st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
-        V = Integer.parseInt(st.nextToken());
-        adj = new int[N + 1][N + 1];
-        visit = new boolean[N + 1];
-        for (int i = 0; i < M; i++) {
-            st = new StringTokenizer(br.readLine());
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
-            adj[a][b] = 1;
-            adj[b][a] = 1;
-        }
-
-        dfs(V);
-        visit = new boolean[N + 1];
-        bfs(V);
-
+        int N = Integer.parseInt(st.nextToken());
+        visit = new boolean[N];
+        int M = Integer.parseInt(st.nextToken());
+        arr = new int[M];
+        dfs(N, M, 0);
 
         bw.write(sb.toString());
         bw.flush();
@@ -50,49 +32,29 @@ class Main {
         bw.close();
     }
 
-    static void dfs(int start) {
-        track = new ArrayList<>();
-        ArrayDeque<Integer> stack = new ArrayDeque<>();
-        stack.addLast(start);
-        while (!stack.isEmpty()) {
+    public static void dfs(int N, int M, int depth) {
 
-            int current = stack.removeLast();
-            if (!visit[current]) {
-                visit[current] = true;
-                track.add(current);
+        // 재귀 깊이가 M과 같아지면 탐색 과정에서 담았던 배열 출력
+        if (depth == M) {
+            for (int val : arr) {
+                sb.append(val).append(" ");
             }
-            for (int i = N; i > 0; i--) {
-                if (!visit[i] && adj[current][i] == 1) {
-                    stack.addLast(i);
-                }
-            }
+            sb.append("\n");
+            return;
         }
-        for (Integer i : track) {
-            sb.append(i).append(" ");
-        }
-        sb.append("\n");
-    }
 
-    static void bfs(int start) {
-        track = new ArrayList<>();
-        ArrayDeque<Integer> queue = new ArrayDeque<>();
-        queue.addLast(start);
-        while (!queue.isEmpty()) {
+        for (int i = 0; i < N; i++) {
 
-            int current = queue.removeFirst();
-            if (!visit[current]) {
-                visit[current] = true;
-                track.add(current);
-            }
-            for (int i = 1; i <= N; i++) {
-                if (!visit[i] && adj[current][i] == 1) {
-                    queue.addLast(i);
-                }
+            // 만약 해당 노드(값)을 방문하지 않았으면
+            if (visit[i] == false) {
+                visit[i] = true;      // 해당 노드를 방문 상태로 변경
+                arr[depth] = i + 1;   // 해당 깊이를 index로 하여 i + 1 값 저장
+                dfs(N, M, depth + 1);  // 다음 자식 노드 방문을 위해 depth를 1 증가시키며 재귀호출
+
+                // 자식노드 방문이 끝나고 돌아오면 방문노드를 방문하지 않은 상태로 변경
+                visit[i] = false;
             }
         }
-        for (Integer i : track) {
-            sb.append(i).append(" ");
-        }
-        sb.append("\n");
+        return;
     }
 }
