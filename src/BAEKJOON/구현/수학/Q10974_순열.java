@@ -1,18 +1,17 @@
+package BAEKJOON.구현.수학;
+
 import java.io.*;
-import java.util.StringTokenizer;
 
 /**
- * 문제 번호: 10975
- * 문제 이름: 차이를 최대로
- * 풀이: DFS 방식으로 모든 순열 탐색 후 문제에서 요구하는 수식의 최대값 계산
+ * 문제 번호: 10974
+ * 문제 이름: 모든 순열
+ * 풀이: DFS 방식으로 모든 순열 탐색
  */
-class Main {
+class Q10974_순열 {
 
-    static int[] nums;
     static int[] array;
     static boolean[] visit;
     static int N;
-    static int result = Integer.MIN_VALUE;
     static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
@@ -22,16 +21,12 @@ class Main {
 
         N = Integer.parseInt(br.readLine());
         array = new int[N];
-        nums = new int[N];
-        visit = new boolean[N];
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < N; i++) {
-            nums[i] = Integer.parseInt(st.nextToken());
-        }
+        visit = new boolean[N + 1];
 
         dfs(0);
 
-        System.out.println(result);
+        bw.write(sb.toString());
+        bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
@@ -39,25 +34,20 @@ class Main {
 
     static void dfs(int depth) {
         if (depth == N) {
-            result = Math.max(result, logic(array));
+            for (int i : array) {
+                sb.append(i).append(" ");
+            }
+            sb.append("\n");
             return;
         }
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 1; i <= N; i++) {
             if (!visit[i]) {
                 visit[i] = true;
-                array[depth] = nums[i];
+                array[depth] = i;
                 dfs(depth + 1);
                 visit[i] = false;
             }
         }
-    }
-
-    static int logic(int[] array) {
-        int sum = 0;
-        for (int i = 1; i < array.length; i++) {
-            sum += Math.abs(array[i-1] - array[i]);
-        }
-        return sum;
     }
 }
