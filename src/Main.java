@@ -1,63 +1,45 @@
 import java.io.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.StringTokenizer;
 
 /**
- * 문제 번호: 10975
- * 문제 이름: 차이를 최대로
- * 풀이: DFS 방식으로 모든 순열 탐색 후 문제에서 요구하는 수식의 최대값 계산
+ * 문제 번호:
+ * 문제 이름:
  */
 class Main {
-
-    static int[] nums;
-    static int[] array;
-    static boolean[] visit;
-    static int N;
-    static int result = Integer.MIN_VALUE;
-    static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        N = Integer.parseInt(br.readLine());
-        array = new int[N];
-        nums = new int[N];
-        visit = new boolean[N];
+        int N = Integer.parseInt(br.readLine());
+        int[] nums = new int[N];
         StringTokenizer st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < N; i++) {
-            nums[i] = Integer.parseInt(st.nextToken());
+        for (int i = 0; i < N; i++) nums[i] = Integer.parseInt(st.nextToken());
+
+        HashSet<Integer> set = new HashSet<>();
+        for (int i : nums) {
+            set.add(i);
         }
 
-        dfs(0);
+        Object[] array = set.toArray();
+        Arrays.sort(array);
+        HashMap<Integer, Integer> map = new HashMap();
+        for (int i = 0; i < array.length; i++) {
+            map.put((Integer) array[i], i);
+        }
 
-        System.out.println(result);
+        StringBuilder sb = new StringBuilder();
+        for (int num : nums) {
+            sb.append(map.get(num)).append(" ");
+        }
+
+        bw.write(sb.toString());
+        bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
-    }
-
-    static void dfs(int depth) {
-        if (depth == N) {
-            result = Math.max(result, logic(array));
-            return;
-        }
-
-        for (int i = 0; i < N; i++) {
-            if (!visit[i]) {
-                visit[i] = true;
-                array[depth] = nums[i];
-                dfs(depth + 1);
-                visit[i] = false;
-            }
-        }
-    }
-
-    static int logic(int[] array) {
-        int sum = 0;
-        for (int i = 1; i < array.length; i++) {
-            sum += Math.abs(array[i-1] - array[i]);
-        }
-        return sum;
     }
 }
