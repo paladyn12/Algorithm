@@ -1,3 +1,5 @@
+package BAEKJOON.탐색;
+
 import java.io.*;
 
 /**
@@ -6,7 +8,7 @@ import java.io.*;
  * 풀이: 상담의 걸리는 시간과 받는 비용을 Class에 정의
  * DFS 탐색을 돌며 N일차 내에 처리할 수 있는 상담인 경우 비용을 더해가며 result 계산
  */
-class Main {
+class Q14501_DFS {
 
     static class Counsel {
         int T;
