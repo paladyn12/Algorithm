@@ -1,4 +1,4 @@
-package BAEKJOON.백트래킹;
+package BAEKJOON.탐색;
 
 import java.io.*;
 import java.util.StringTokenizer;

@@ -1,3 +1,5 @@
+package BAEKJOON.탐색;
+
 import java.io.*;
 import java.util.StringTokenizer;
 
@@ -8,7 +10,7 @@ import java.util.StringTokenizer;
  * 팀의 인원이 1명부터 N-1명일 때 까지 계산
  * 스타트팀일 때와 링크팀일 때 점수가 다르므로 N-1까지 반복해서 찾아야 함
  */
-class Main {
+class Q15661_백트래킹 {
 
     static int N;
     static int[] nums;
