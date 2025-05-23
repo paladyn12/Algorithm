@@ -1,0 +1,57 @@
+package BAEKJOON.비트마스킹;
+
+import java.io.*;
+import java.util.StringTokenizer;
+
+/**
+ * 문제 번호: 1182
+ * 문제 이름: 부분수열의 합
+ * 풀이: 비트마스킹으로 부분 수열의 누적합을 계산
+ */
+class Q1182_비트마스킹 {
+
+    static boolean[] visit;
+    static int[] nums;
+
+    static int S;
+
+    static StringBuilder sb = new StringBuilder();
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        S = Integer.parseInt(st.nextToken());
+        nums = new int[N];
+        visit = new boolean[N];
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < N; i++) {
+            nums[i] = Integer.parseInt(st.nextToken());
+        }
+
+        int count = 0;
+
+        for (int bit = 1; bit < (1 << N); bit++) {
+
+            int sum = 0;
+            for (int i = 0; i < N; i++) {
+                if ((bit & (1 << i)) != 0) {
+                    sum += nums[i];
+                }
+            }
+            if (sum == S) count++;
+
+        }
+
+        System.out.println(count);
+
+        bw.flush();
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        br.close();
+        bw.close();
+    }
+
+}
