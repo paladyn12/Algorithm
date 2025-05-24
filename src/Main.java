@@ -2,81 +2,44 @@ import java.io.*;
 import java.util.*;
 
 /**
- * 문제 번호: 1260
- * 문제 이름: DFS와 BFS
- * 풀이: DFS, BFS 방식으로 탐색
+ * 문제 번호:
+ * 문제 이름:
  */
 class Main {
-
-    static TreeSet<Integer>[] gragh;
-    static int N;
-    static boolean[] visit;
-
-    static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
-        visit = new boolean[N + 1];
-        gragh = new TreeSet[N + 1];
-        int M = Integer.parseInt(st.nextToken());
-        int V = Integer.parseInt(st.nextToken());
-
-        for (int i = 1; i <= N; i++) {
-            gragh[i] = new TreeSet<>();
-        }
-        for (int i = 0; i < M; i++) {
+        int N = Integer.parseInt(br.readLine());
+        int[][] info = new int[N][2];
+        StringTokenizer st;
+        for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
-            int s = Integer.parseInt(st.nextToken());
-            int e = Integer.parseInt(st.nextToken());
-            gragh[s].add(e);
-            gragh[e].add(s);
+            info[i][0] = Integer.parseInt(st.nextToken());
+            info[i][1] = Integer.parseInt(st.nextToken());
         }
 
-        dfs(V);
-        visit = new boolean[N + 1];
-        sb.append("\n");
-        bfs(V);
+        Arrays.sort(info, (t1, t2) -> {
+            if (t1[1] == t2[1]) return t1[0] - t2[0];
+            return t1[1] - t2[1];
+        });
 
-        bw.write(sb.toString());
-        bw.flush();
+        int endTime = 0;
+        int count = 0;
+
+        for (int i = 0; i < N; i++) {
+            if (info[i][0] >= endTime) {
+                count++;
+                endTime = info[i][1];
+            }
+        }
+
+        System.out.println(count);
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
-    }
-
-    static void dfs(int start) {
-        visit[start] = true;
-        sb.append(start).append(" ");
-
-        for (int i : gragh[start]) {
-            if (!visit[i]) {
-                dfs(i);
-            }
-        }
-
-    }
-
-    static void bfs(int start) {
-        visit[start] = true;
-        ArrayDeque<Integer> queue = new ArrayDeque<>();
-        queue.addLast(start);
-
-        while (!queue.isEmpty()) {
-            Integer cur = queue.pollFirst();
-            sb.append(cur).append(" ");
-
-            for (Integer i : gragh[cur]) {
-                if (!visit[i]) {
-                    visit[i] = true;
-                    queue.addLast(i);
-                }
-            }
-        }
     }
 
 }
