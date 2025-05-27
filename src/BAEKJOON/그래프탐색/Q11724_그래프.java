@@ -1,4 +1,4 @@
-package BAEKJOON.그래프;
+package BAEKJOON.그래프탐색;
 
 import java.io.*;
 import java.util.HashSet;
@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
  * 문제 이름: 연결 요소의 개수
  * 풀이 : Union - Find
  */
-class Q11724 {
+class Q11724_그래프 {
 
     static int[] parent;
 

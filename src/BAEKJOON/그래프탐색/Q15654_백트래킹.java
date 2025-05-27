@@ -1,4 +1,4 @@
-package BAEKJOON.탐색;
+package BAEKJOON.그래프탐색;
 
 import java.io.*;
 import java.util.Arrays;

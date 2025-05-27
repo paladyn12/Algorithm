@@ -1,23 +1,20 @@
-package BAEKJOON.탐색;
+package BAEKJOON.그래프탐색;
 
 import java.io.*;
 import java.util.ArrayDeque;
 import java.util.StringTokenizer;
 
 /**
- * 문제 번호: 1012
- * 문제 이름: 유기농 배추
- * 풀이: 배추가 심어져 있고 방문하지 않은 지역을 만나면 count++ (지렁이 심기)
- * 지렁이를 심은 지역으로부터 이어진 부분은 모두 방문하여 추가적으로 지렁이를 심지 않도록 함
+ * 문제 번호: 2178
+ * 문제 이름: 미로 탐색
+ * 풀이: BFS 알고리즘으로 map[N-1][M-1] 까지 경로 길이를 추적해나감
  */
-class Q1012_BFS {
+class Q2178_BFS {
 
     static int M;
     static int N;
-    static int K;
     static int[][] map;
     static boolean[][] visit;
-    static int count;
 
     static int[] dirX = {0, 0, -1, 1};
     static int[] dirY = {1, -1, 0, 0};
@@ -41,38 +38,23 @@ class Q1012_BFS {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        int test_case = Integer.parseInt(br.readLine());
-        StringBuilder sb = new StringBuilder();
-        while (test_case-- > 0) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            M = Integer.parseInt(st.nextToken());
-            N = Integer.parseInt(st.nextToken());
-            K = Integer.parseInt(st.nextToken());
-            map = new int[M][N];
-            visit = new boolean[M][N];
-            for (int i = 0; i < K; i++) {
-                st = new StringTokenizer(br.readLine());
-                int a = Integer.parseInt(st.nextToken());
-                int b = Integer.parseInt(st.nextToken());
-                map[a][b] = 1;
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        map = new int[N][M];
+        visit = new boolean[N][M];
+        for (int i = 0; i < N; i++) {
+            String s = br.readLine();
+            for (int j = 0; j < M; j++) {
+                if (s.charAt(j) == '1')
+                    map[i][j] = 1;
             }
-            count = 0;
-
-            for (int i = 0; i < M; i++) {
-                for (int j = 0; j < N; j++) {
-                    if (!visit[i][j] && map[i][j] == 1) {
-                        count++;
-                        bfs(i, j);
-                    }
-                }
-            }
-
-            sb.append(count).append("\n");
-
         }
 
-        bw.write(sb.toString());
-        bw.flush();
+        bfs(0, 0);
+
+        System.out.println(map[N-1][M-1]);
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
@@ -90,11 +72,12 @@ class Q1012_BFS {
                 if (rangeCheck() && !visit[cx][cy] && map[cx][cy] == 1) {
                     queue.addLast(new Node(cx, cy));
                     visit[cx][cy] = true;
+                    map[cx][cy] = map[node.x][node.y] + 1;
                 }
             }
         }
     }
     static boolean rangeCheck() {
-        return cx >= 0 && cx < M && cy >= 0 && cy < N;
+        return cx >= 0 && cx < N && cy >= 0 && cy < M;
     }
 }

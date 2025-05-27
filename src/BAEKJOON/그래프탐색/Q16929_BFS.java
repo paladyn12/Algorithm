@@ -1,5 +1,8 @@
+package BAEKJOON.그래프탐색;
+
 import java.io.*;
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.StringTokenizer;
 
 /**
  * 문제 번호: 16929
@@ -9,7 +12,7 @@ import java.util.*;
  * 만약 탐색하는 노드의 depth가 nextDepth이면 (같은 depth의 노드) 순환
  */
 
-class Main {
+class Q16929_BFS {
 
     static int N;
     static int M;

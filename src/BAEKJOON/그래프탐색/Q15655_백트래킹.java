@@ -1,15 +1,15 @@
-package BAEKJOON.탐색;
+package BAEKJOON.그래프탐색;
 
 import java.io.*;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /**
- * 문제 번호: 15657
- * 문제 이름: N과 M (8)
+ * 문제 번호: 15655
+ * 문제 이름: N과 M (6)
  * 풀이: 백트래킹 기본 문제
  */
-class Q15657_백트래킹 {
+class Q15655_백트래킹 {
 
     static int N;
     static int M;
@@ -56,14 +56,12 @@ class Q15657_백트래킹 {
         }
 
         for (int i = start; i < N; i++) {
-            array[depth] = nums[i];
-            dfs(depth + 1, i);
-//            if (!visit[i]) {
-//                array[depth] = nums[i];
-//                visit[i] = true;
-//                dfs(depth + 1);
-//            }
-//            visit[i] = false;
+            if (!visit[i]) {
+                array[depth] = nums[i];
+                visit[i] = true;
+                dfs(depth + 1, i + 1);
+            }
+            visit[i] = false;
         }
     }
 }
