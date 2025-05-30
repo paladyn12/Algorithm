@@ -8,11 +8,6 @@ import java.util.*;
  */
 
 class Main {
-    static boolean[] visit;
-    static int[] nums;
-
-    static int S;
-
     static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
@@ -20,32 +15,40 @@ class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int N = Integer.parseInt(st.nextToken());
-        S = Integer.parseInt(st.nextToken());
-        nums = new int[N];
-        visit = new boolean[N];
-        st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < N; i++) {
-            nums[i] = Integer.parseInt(st.nextToken());
-        }
+        int bitmask = 0;
 
-        int count = 0;
-
-        for (int bit = 1; bit < (1 << N); bit++) {
-
-            int sum = 0;
-            for (int i = 0; i < N; i++) {
-                if ((bit & (1 << i)) != 0) {
-                    sum += nums[i];
-                }
+        int M = Integer.parseInt(br.readLine());
+        for (int i = 0; i < M; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            String cmd = st.nextToken();
+            int x = 0;
+            if (st.hasMoreTokens()) {
+                x = Integer.parseInt(st.nextToken());
             }
-            if (sum == S) count++;
-
+            switch (cmd) {
+                case "add":
+                    bitmask |= (1 << x - 1);
+                    break;
+                case "remove":
+                    bitmask &= ~(1 << x - 1);
+                    break;
+                case "check":
+                    if ((bitmask & (1 << (x - 1))) != 0) sb.append("1\n");
+                    else sb.append("0\n");
+                    break;
+                case "toggle":
+                    bitmask ^= (1 << (x - 1));
+                    break;
+                case "all":
+                    bitmask = (1 << 20) - 1;
+                    break;
+                case "empty":
+                    bitmask = 0;
+                    break;
+            }
         }
 
-        System.out.println(count);
-
+        bw.write(sb.toString());
         bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
