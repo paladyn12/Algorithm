@@ -8,48 +8,54 @@ import java.util.*;
  */
 
 class Main {
-    static StringBuilder sb = new StringBuilder();
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        int bitmask = 0;
-
-        int M = Integer.parseInt(br.readLine());
-        for (int i = 0; i < M; i++) {
+        int N = Integer.parseInt(br.readLine());
+        int wrong = Integer.parseInt(br.readLine());
+        boolean[] error = new boolean[10];
+        if (wrong != 0) {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            String cmd = st.nextToken();
-            int x = 0;
-            if (st.hasMoreTokens()) {
-                x = Integer.parseInt(st.nextToken());
+            for (int i = 0; i < wrong; i++) {
+                error[Integer.parseInt(st.nextToken())] = true;
             }
-            switch (cmd) {
-                case "add":
-                    bitmask |= (1 << x - 1);
+        }
+        int result = Math.abs(100 - N);
+
+        for (int i = 0; i <= 999999; i++) {
+
+            boolean next = false;
+            int length = 0;
+            int n = i;
+
+            if (n == 0) {
+                if (!error[0]) {
+                    length = 1;
+                } else {
+                    next = true;
+                }
+            }
+
+            while (n > 0) {
+                if (error[n % 10]) {
+                    next = true;
                     break;
-                case "remove":
-                    bitmask &= ~(1 << x - 1);
-                    break;
-                case "check":
-                    if ((bitmask & (1 << (x - 1))) != 0) sb.append("1\n");
-                    else sb.append("0\n");
-                    break;
-                case "toggle":
-                    bitmask ^= (1 << (x - 1));
-                    break;
-                case "all":
-                    bitmask = (1 << 20) - 1;
-                    break;
-                case "empty":
-                    bitmask = 0;
-                    break;
+                }
+                length++;
+                n /= 10;
+            }
+
+            if (!next) {
+                // 결과 업데이트
+                result = Math.min(result, length + Math.abs(N - i));
             }
         }
 
-        bw.write(sb.toString());
-        bw.flush();
+
+        System.out.println(result);
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
