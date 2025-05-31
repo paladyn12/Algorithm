@@ -14,50 +14,24 @@ class Main {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         int N = Integer.parseInt(br.readLine());
-        int wrong = Integer.parseInt(br.readLine());
-        boolean[] error = new boolean[10];
-        if (wrong != 0) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            for (int i = 0; i < wrong; i++) {
-                error[Integer.parseInt(st.nextToken())] = true;
-            }
+        int[][] price = new int[N + 1][3];
+        StringTokenizer st;
+        for (int i = 1; i <= N; i++) {
+            st = new StringTokenizer(br.readLine());
+            price[i][0] = Integer.parseInt(st.nextToken());
+            price[i][1] = Integer.parseInt(st.nextToken());
+            price[i][2] = Integer.parseInt(st.nextToken());
         }
-        int result = Math.abs(100 - N);
-
-        for (int i = 0; i <= 999999; i++) {
-
-            boolean next = false;
-            int length = 0;
-            int n = i;
-
-            if (n == 0) {
-                if (!error[0]) {
-                    length = 1;
-                } else {
-                    next = true;
-                }
-            }
-
-            while (n > 0) {
-                if (error[n % 10]) {
-                    next = true;
-                    break;
-                }
-                length++;
-                n /= 10;
-            }
-
-            if (!next) {
-                // 결과 업데이트
-                result = Math.min(result, length + Math.abs(N - i));
-            }
+        int[][] dp = new int[N + 1][3];
+        dp[1] = new int[]{price[1][0], price[1][1], price[1][2]};
+        for (int i = 2; i <= N; i++) {
+            dp[i][0] = Math.min(dp[i-1][1], dp[i-1][2]) + price[i][0];
+            dp[i][1] = Math.min(dp[i-1][0], dp[i-1][2]) + price[i][1];
+            dp[i][2] = Math.min(dp[i-1][0], dp[i-1][1]) + price[i][2];
         }
 
-
-        System.out.println(result);
-
+        System.out.println(Math.min(Math.min(dp[N][0], dp[N][1]), dp[N][2]));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
-        bw.close();
     }
 }
