@@ -9,88 +9,58 @@ import java.util.*;
 
 class Main {
     static int N;
-    static int M;
-    static int V;
-    static int[][] adj;
     static boolean[] visit;
-    static ArrayList<Integer> track;
-
-    static StringBuilder sb = new StringBuilder();
+    static int[][] S;
+    static int result = Integer.MAX_VALUE;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
-        V = Integer.parseInt(st.nextToken());
-        adj = new int[N + 1][N + 1];
-        visit = new boolean[N + 1];
-        for (int i = 0; i < M; i++) {
+        N = Integer.parseInt(br.readLine());
+        visit = new boolean[N];
+        S = new int[N][N];
+        StringTokenizer st;
+        for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
-            adj[a][b] = 1;
-            adj[b][a] = 1;
+            for (int j = 0; j < N; j++) {
+                S[i][j] = Integer.parseInt(st.nextToken());
+            }
         }
 
-        dfs(V);
-        visit = new boolean[N + 1];
-        bfs(V);
+        visit[0] = true;
+        dfs(0, 1);
 
-
-        bw.write(sb.toString());
+        System.out.println(result);
         bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
     }
 
-    static void dfs(int start) {
-        track = new ArrayList<>();
-        ArrayDeque<Integer> stack = new ArrayDeque<>();
-        stack.addLast(start);
-        while (!stack.isEmpty()) {
-
-            int current = stack.removeLast();
-            if (!visit[current]) {
-                visit[current] = true;
-                track.add(current);
-            }
-            for (int i = N; i > 0; i--) {
-                if (!visit[i] && adj[current][i] == 1) {
-                    stack.addLast(i);
+    static void dfs(int start, int depth) {
+        if (depth == N / 2) {
+            int startSum = 0;
+            int linkSum = 0;
+            for (int i = 0; i < N - 1; i++) {
+                for (int j = i + 1; j < N; j++) {
+                    if (visit[i] && visit[j]) {
+                        startSum += S[i][j] + S[j][i];
+                    } else if (!visit[i] && !visit[j]) {
+                        linkSum += S[i][j] + S[j][i];
+                    }
                 }
             }
+            result = Math.min(result, Math.abs(startSum - linkSum));
+            return;
         }
-        for (Integer i : track) {
-            sb.append(i).append(" ");
-        }
-        sb.append("\n");
-    }
 
-    static void bfs(int start) {
-        track = new ArrayList<>();
-        ArrayDeque<Integer> queue = new ArrayDeque<>();
-        queue.addLast(start);
-        while (!queue.isEmpty()) {
-
-            int current = queue.removeFirst();
-            if (!visit[current]) {
-                visit[current] = true;
-                track.add(current);
-            }
-            for (int i = 1; i <= N; i++) {
-                if (!visit[i] && adj[current][i] == 1) {
-                    queue.addLast(i);
-                }
+        for (int i = start; i < N; i++) {
+            if (!visit[i]) {
+                visit[i] = true;
+                dfs(i + 1, depth + 1);
+                visit[i] = false;
             }
         }
-        for (Integer i : track) {
-            sb.append(i).append(" ");
-        }
-        sb.append("\n");
     }
 }
