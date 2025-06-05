@@ -8,51 +8,59 @@ import java.util.*;
  */
 
 class Main {
-    static int[] parent;
+    static int k;
+    static int[] array;
+    static boolean[] visit;
+    static int[] cur;
+    static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
-        parent = new int[N + 1];
-        for (int i = 1; i <= N; i++) {
-            parent[i] = i;
-        }
+        StringTokenizer st;
 
-        for (int i = 0; i < M; i++) {
+        while (true) {
             st = new StringTokenizer(br.readLine());
-            int s = Integer.parseInt(st.nextToken());
-            int e = Integer.parseInt(st.nextToken());
-            union(s, e);
+            k = Integer.parseInt(st.nextToken());
+            if (k == 0) break;
+
+            array = new int[k];
+            visit = new boolean[k];
+            cur = new int[6];
+            for (int i = 0; i < k; i++) {
+                array[i] = Integer.parseInt(st.nextToken());
+            }
+
+            dfs(0, 0);
+            sb.append("\n");
         }
 
-        HashSet<Integer> set = new HashSet<>();
-        for (int i = 1; i <= N; i++) {
-            set.add(find(i));
-        }
-        System.out.println(set.size());
-
+        bw.write(sb.toString());
+        bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
+
     }
 
-    static int find(int e) {
-        if (e != parent[e]) {
-            parent[e] = find(parent[e]);
+    static void dfs(int start, int depth) {
+        if (depth == 6) {
+            for (int i : cur) {
+                sb.append(i).append(" ");
+            }
+            sb.append("\n");
+            return;
         }
-        return parent[e];
-    }
 
-    static void union(int s, int e) {
-        int rootS = find(s);
-        int rootE = find(e);
-        if (rootS != rootE) {
-            parent[rootE] = rootS;
+        for (int i = start; i < k; i++) {
+            if (!visit[i]) {
+                visit[i] = true;
+                cur[depth] = array[i];
+                dfs(i + 1, depth + 1);
+                visit[i] = false;
+            }
         }
     }
 }
