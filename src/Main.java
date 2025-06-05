@@ -8,59 +8,51 @@ import java.util.*;
  */
 
 class Main {
-    static int N;
-    static boolean[] visit;
-    static int[][] S;
-    static int result = Integer.MAX_VALUE;
+    static int[] parent;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        N = Integer.parseInt(br.readLine());
-        visit = new boolean[N];
-        S = new int[N][N];
-        StringTokenizer st;
-        for (int i = 0; i < N; i++) {
-            st = new StringTokenizer(br.readLine());
-            for (int j = 0; j < N; j++) {
-                S[i][j] = Integer.parseInt(st.nextToken());
-            }
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+        parent = new int[N + 1];
+        for (int i = 1; i <= N; i++) {
+            parent[i] = i;
         }
 
-        visit[0] = true;
-        dfs(0, 1);
+        for (int i = 0; i < M; i++) {
+            st = new StringTokenizer(br.readLine());
+            int s = Integer.parseInt(st.nextToken());
+            int e = Integer.parseInt(st.nextToken());
+            union(s, e);
+        }
 
-        System.out.println(result);
-        bw.flush();
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = 1; i <= N; i++) {
+            set.add(find(i));
+        }
+        System.out.println(set.size());
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
     }
 
-    static void dfs(int start, int depth) {
-        if (depth == N / 2) {
-            int startSum = 0;
-            int linkSum = 0;
-            for (int i = 0; i < N - 1; i++) {
-                for (int j = i + 1; j < N; j++) {
-                    if (visit[i] && visit[j]) {
-                        startSum += S[i][j] + S[j][i];
-                    } else if (!visit[i] && !visit[j]) {
-                        linkSum += S[i][j] + S[j][i];
-                    }
-                }
-            }
-            result = Math.min(result, Math.abs(startSum - linkSum));
-            return;
+    static int find(int e) {
+        if (e != parent[e]) {
+            parent[e] = find(parent[e]);
         }
+        return parent[e];
+    }
 
-        for (int i = start; i < N; i++) {
-            if (!visit[i]) {
-                visit[i] = true;
-                dfs(i + 1, depth + 1);
-                visit[i] = false;
-            }
+    static void union(int s, int e) {
+        int rootS = find(s);
+        int rootE = find(e);
+        if (rootS != rootE) {
+            parent[rootE] = rootS;
         }
     }
 }
