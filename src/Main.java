@@ -8,59 +8,39 @@ import java.util.*;
  */
 
 class Main {
-    static int k;
-    static int[] array;
-    static boolean[] visit;
-    static int[] cur;
-    static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        int N = Integer.parseInt(br.readLine());
+        int[][] info = new int[N][2];
         StringTokenizer st;
-
-        while (true) {
+        for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
-            k = Integer.parseInt(st.nextToken());
-            if (k == 0) break;
-
-            array = new int[k];
-            visit = new boolean[k];
-            cur = new int[6];
-            for (int i = 0; i < k; i++) {
-                array[i] = Integer.parseInt(st.nextToken());
-            }
-
-            dfs(0, 0);
-            sb.append("\n");
+            info[i][0] = Integer.parseInt(st.nextToken());
+            info[i][1] = Integer.parseInt(st.nextToken());
         }
 
-        bw.write(sb.toString());
-        bw.flush();
+        Arrays.sort(info, (t1, t2) -> {
+            if (t1[1] == t2[1]) return t1[0] - t2[0];
+            return t1[1] - t2[1];
+        });
+
+        int endTime = 0;
+        int count = 0;
+
+        for (int i = 0; i < N; i++) {
+            if (info[i][0] >= endTime) {
+                count++;
+                endTime = info[i][1];
+            }
+        }
+
+        System.out.println(count);
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
-
-    }
-
-    static void dfs(int start, int depth) {
-        if (depth == 6) {
-            for (int i : cur) {
-                sb.append(i).append(" ");
-            }
-            sb.append("\n");
-            return;
-        }
-
-        for (int i = start; i < k; i++) {
-            if (!visit[i]) {
-                visit[i] = true;
-                cur[depth] = array[i];
-                dfs(i + 1, depth + 1);
-                visit[i] = false;
-            }
-        }
     }
 }
