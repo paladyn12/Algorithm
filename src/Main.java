@@ -8,35 +8,40 @@ import java.util.*;
  */
 
 class Main {
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        int N = Integer.parseInt(br.readLine());
-        int[][] dots = new int[N][2];
-
-        StringTokenizer st;
-        for (int i = 0; i < N; i++) {
-            st = new StringTokenizer(br.readLine());
-            dots[i][0] = Integer.parseInt(st.nextToken());
-            dots[i][1] = Integer.parseInt(st.nextToken());
-        }
-
-        Arrays.sort(dots, (a,b) -> {
-            if (a[0] == b[0]) {
-                return Integer.compare(a[1], b[1]);
-            }
-            return Integer.compare(a[0], b[0]);
-        });
-
+        String string;
         StringBuilder sb = new StringBuilder();
-        for (int[] dot : dots) {
-            sb.append(dot[0]).append(" ").append(dot[1]).append("\n");
+        while ((string = br.readLine()) != null) {
+            int[] result = new int[4];
+            for (int i = 0; i < string.length(); i++) {
+                char ch = string.charAt(i);
+                result[logic(ch)]++;
+            }
+            for (int i : result) {
+                sb.append(i).append(" ");
+            }
+            sb.append("\n");
         }
         bw.write(sb.toString());
         bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
+    }
+    private static int logic(char ch) {
+        if (ch >= 97 && ch <= 122) {
+            return 0;
+        } else if (ch >= 65 && ch <= 90) {
+            return 1;
+        } else if (ch >= 48 && ch <= 57) {
+            return 2;
+        } else if (ch == 32) {
+            return 3;
+        }
+        return 0;
     }
 }
