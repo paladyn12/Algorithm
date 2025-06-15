@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * 문제 번호:
@@ -13,35 +13,37 @@ class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        String string;
-        StringBuilder sb = new StringBuilder();
-        while ((string = br.readLine()) != null) {
-            int[] result = new int[4];
-            for (int i = 0; i < string.length(); i++) {
-                char ch = string.charAt(i);
-                result[logic(ch)]++;
+        boolean[] isPrime = new boolean[1000001];
+        Arrays.fill(isPrime,true);
+        for (int i = 2; i <= 1000; i++) {
+            if (isPrime[i]) {
+                for (int j = i*i; j <= 1000000; j+=i) {
+                    isPrime[j] = false;
+                }
             }
-            for (int i : result) {
-                sb.append(i).append(" ");
-            }
-            sb.append("\n");
         }
+        int n;
+        StringBuilder sb = new StringBuilder();
+        while (true) {
+            n = Integer.parseInt(br.readLine());
+            boolean flag = false;
+            if (n == 0) break;
+            for (int i = 3; i <= n/2; i+=2) {
+                if (isPrime[i] && isPrime[n-i]) {
+                    sb.append(n).append(" = ").append(i).append(" + ").append(n-i).append("\n");
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag) {
+                sb.append("Goldbach's conjecture is wrong.\n");
+            }
+        }
+
         bw.write(sb.toString());
         bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         br.close();
         bw.close();
-    }
-    private static int logic(char ch) {
-        if (ch >= 97 && ch <= 122) {
-            return 0;
-        } else if (ch >= 65 && ch <= 90) {
-            return 1;
-        } else if (ch >= 48 && ch <= 57) {
-            return 2;
-        } else if (ch == 32) {
-            return 3;
-        }
-        return 0;
     }
 }
