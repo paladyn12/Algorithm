@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 /**
  * 문제 번호:
@@ -13,33 +13,30 @@ class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        boolean[] isPrime = new boolean[1000001];
-        Arrays.fill(isPrime,true);
-        for (int i = 2; i <= 1000; i++) {
-            if (isPrime[i]) {
-                for (int j = i*i; j <= 1000000; j+=i) {
-                    isPrime[j] = false;
-                }
-            }
-        }
-        int n;
+        int N = Integer.parseInt(br.readLine());
+        ArrayList<Integer> stack = new ArrayList();
         StringBuilder sb = new StringBuilder();
-        while (true) {
-            n = Integer.parseInt(br.readLine());
-            boolean flag = false;
-            if (n == 0) break;
-            for (int i = 3; i <= n/2; i+=2) {
-                if (isPrime[i] && isPrime[n-i]) {
-                    sb.append(n).append(" = ").append(i).append(" + ").append(n-i).append("\n");
-                    flag = true;
-                    break;
+        int last = 1;
+        for (int i = 0; i < N; i++) {
+            int input = Integer.parseInt(br.readLine());
+            if (last <= input) {
+                while (last <= input) {
+                    stack.add(last);
+                    last++;
+                    sb.append("+\n");
+                }
+                stack.remove(stack.size()-1);
+                sb.append("-\n");
+            } else {
+                if (stack.get(stack.size()-1) != input) {
+                    System.out.println("NO");
+                    System.exit(0);
+                } else {
+                    stack.remove(stack.size()-1);
+                    sb.append("-\n");
                 }
             }
-            if (!flag) {
-                sb.append("Goldbach's conjecture is wrong.\n");
-            }
         }
-
         bw.write(sb.toString());
         bw.flush();
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
