@@ -1,82 +1,44 @@
 package SWEA.Difficulty_2;
-/////////////////////////////////////////////////////////////////////////////////////////////
-// 기본 제공코드는 임의 수정해도 관계 없습니다. 단, 입출력 포맷 주의
-// 아래 표준 입출력 예제 필요시 참고하세요.
-// 표준 입력 예제
-// int a;
-// double b;
-// char g;
-// String var;
-// long AB;
-// a = sc.nextInt();                           // int 변수 1개 입력받는 예제
-// b = sc.nextDouble();                        // double 변수 1개 입력받는 예제
-// g = sc.nextByte();                          // char 변수 1개 입력받는 예제
-// var = sc.next();                            // 문자열 1개 입력받는 예제
-// AB = sc.nextLong();                         // long 변수 1개 입력받는 예제
-/////////////////////////////////////////////////////////////////////////////////////////////
-// 표준 출력 예제
-// int a = 0;
-// double b = 1.0;
-// char g = 'b';
-// String var = "ABCDEFG";
-// long AB = 12345678901234567L;
-//System.out.println(a);                       // int 변수 1개 출력하는 예제
-//System.out.println(b); 		       						 // double 변수 1개 출력하는 예제
-//System.out.println(g);		       						 // char 변수 1개 출력하는 예제
-//System.out.println(var);		       				   // 문자열 1개 출력하는 예제
-//System.out.println(AB);		       				     // long 변수 1개 출력하는 예제
-/////////////////////////////////////////////////////////////////////////////////////////////
-import java.util.Scanner;
-import java.io.FileInputStream;
 
-/*
-   사용하는 클래스명이 Solution 이어야 하므로, 가급적 Solution.java 를 사용할 것을 권장합니다.
-   이러한 상황에서도 동일하게 java Solution 명령으로 프로그램을 수행해볼 수 있습니다.
- */
-class Q1959
-{
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+class Q1959 {
     public static void main(String args[]) throws Exception {
-        Scanner sc = new Scanner(System.in);
-        int T = sc.nextInt();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int T = Integer.parseInt(br.readLine());
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
 
         for (int test_case = 1; test_case <= T; test_case++) {
-            int N = sc.nextInt();
-            int M = sc.nextInt();
+            st = new StringTokenizer(br.readLine());
+            int N = Integer.parseInt(st.nextToken());
+            int M = Integer.parseInt(st.nextToken());
+            int[] arrN = new int[N];
+            int[] arrM = new int[M];
 
-            int[] nArray = new int[N];
-            int[] mArray = new int[M];
+            st = new StringTokenizer(br.readLine());
+            for (int i = 0; i < N; i++) arrN[i] = Integer.parseInt(st.nextToken());
+            st = new StringTokenizer(br.readLine());
+            for (int i = 0; i < M; i++) arrM[i] = Integer.parseInt(st.nextToken());
 
-            for (int i = 0; i < N; i++) {
-                nArray[i] = sc.nextInt();
-            }
-            for (int i = 0; i < M; i++) {
-                mArray[i] = sc.nextInt();
-            }
-
-            int max = Integer.MIN_VALUE;  // max 초기화
-
-            if (N >= M) {
-                // nArray가 더 긴 경우
-                for (int i = 0; i <= N - M; i++) {
-                    int sum = 0;
-                    for (int j = 0; j < M; j++) {
-                        sum += nArray[i + j] * mArray[j];
-                    }
-                    if (sum > max) max = sum;
-                }
-            } else {
-                // mArray가 더 긴 경우
-                for (int i = 0; i <= M - N; i++) {
-                    int sum = 0;
-                    for (int j = 0; j < N; j++) {
-                        sum += nArray[j] * mArray[i + j];
-                    }
-                    if (sum > max) max = sum;
-                }
-            }
-
-            System.out.printf("#%d %d\n", test_case, max);
+            int result = (N > M) ? getMaxProduct(arrN, arrM) : getMaxProduct(arrM, arrN);
+            sb.append("#").append(test_case).append(" ").append(result).append("\n");
         }
-        sc.close();
+        System.out.println(sb);
+    }
+
+    private static int getMaxProduct(int[] longer, int[] shorter) {
+        int max = Integer.MIN_VALUE;
+        int diff = longer.length - shorter.length + 1;
+        for (int i = 0; i < diff; i++) {
+            int sum = 0;
+            for (int j = 0; j < shorter.length; j++) {
+                sum += longer[i + j] * shorter[j];
+            }
+            max = Math.max(max, sum);
+        }
+        return max;
     }
 }
