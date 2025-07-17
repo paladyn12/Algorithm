@@ -1,5 +1,3 @@
-package BAEKJOON.다이나믹프로그래밍;
-
 import java.util.*;
 import java.io.*;
 
@@ -7,7 +5,7 @@ class Q12865_다이나믹프로그래밍 {
 
     static int N;
     static int K;
-
+    
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] NK = br.readLine().split(" ");
@@ -32,7 +30,7 @@ class Q12865_다이나믹프로그래밍 {
                 }
             }
         }
-
+        
         System.out.print(dp[N][K]);
     }
 }
