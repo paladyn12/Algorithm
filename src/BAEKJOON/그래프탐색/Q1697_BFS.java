@@ -1,13 +1,11 @@
-package BAEKJOON.그래프탐색;
-
 import java.util.*;
 import java.io.*;
 
 class Q1697_BFS
 {
-
-    public static void main(String args[]) throws Exception
-    {
+    
+	public static void main(String args[]) throws Exception
+	{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] str = br.readLine().split(" ");
         int N = Integer.parseInt(str[0]);
@@ -25,7 +23,7 @@ class Q1697_BFS
                 System.out.print(array[N]);
                 break;
             }
-
+            
             if (idx > 0) {
                 if (array[idx-1] == -1) {
                     array[idx-1] = array[idx] + 1;
@@ -45,5 +43,5 @@ class Q1697_BFS
                 }
             }
         }
-    }
+	}
 }
