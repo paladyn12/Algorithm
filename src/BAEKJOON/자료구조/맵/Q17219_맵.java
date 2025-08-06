@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-class Q9375_맵 {
+class Q17219_맵 {
     public static void main(String[] args) throws IOException {
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
