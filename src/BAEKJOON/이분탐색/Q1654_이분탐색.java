@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Q1927_이분탐색 {
+public class Q1654_이분탐색 {
 
 	public static void main(String[] args) throws IOException {
 
