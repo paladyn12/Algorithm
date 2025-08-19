@@ -1,13 +1,6 @@
 import java.util.*;
 import java.io.*;
 
-class Tank {
-    int x;
-    int y;
-    // 0: 위, 1: 오른쪽, 2: 아래, 3: 왼쪽
-    int direction;
-}
-
 class Q1873 {
 
     static int[] dx = {-1, 0, 1, 0};
