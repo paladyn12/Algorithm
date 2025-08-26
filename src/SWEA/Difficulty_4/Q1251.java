@@ -1,0 +1,113 @@
+import java.util.*;
+import java.io.*;
+
+class Q1251 {
+
+    static class Island {
+        int x;
+        int y;
+        public Island(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+    
+    static class Edge implements Comparable<Edge> {
+        int from;
+        int to;
+        long weight;
+        
+        public Edge(int from, int to, long weight) {
+            this.from = from;
+            this.to = to;
+            this.weight = weight;
+        }
+
+        // 가중치 오름차순
+        public int compareTo(Edge o) {
+            return Long.compare(weight, o.weight);
+        }
+    }
+
+    static ArrayList<Edge> edgeList;
+    static int[] parent;
+    static int V, E;
+    
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
+
+        int T = Integer.parseInt(br.readLine());
+        for (int test_case = 1; test_case <= T; test_case++) {
+            
+            V = Integer.parseInt(br.readLine());
+            E = V * (V - 1) / 2;
+
+            long[] xs = new long[V];
+            st = new StringTokenizer(br.readLine());
+            for (int i = 0; i < V; i++) {
+                xs[i] = Long.parseLong(st.nextToken());
+            }
+            
+            long[] ys = new long[V];
+            st = new StringTokenizer(br.readLine());
+            for (int i = 0; i < V; i++) {
+                ys[i] = Long.parseLong(st.nextToken());
+            }
+
+            parent = new int[V];
+            edgeList = new ArrayList<>();
+
+            for (int i = 0; i < V - 1; i++) {
+                for (int j = i + 1; j < V; j++) {
+                    int from = i;
+                    int to = j;
+                    long weight = (xs[j] - xs[i]) * (xs[j] - xs[i]) + (ys[j] - ys[i]) * (ys[j] - ys[i]);
+                    //System.out.println(weight);
+                    edgeList.add(new Edge(from, to, weight));
+                }
+            }
+
+            Collections.sort(edgeList);
+            make();
+    
+            int cnt = 0;
+            long ans = 0;
+            for (Edge edge : edgeList) {
+                if (!union(edge.from, edge.to)) continue; // union 실패
+                ans += edge.weight;
+                cnt++;
+                if (cnt == V - 1) break;
+            }
+
+            double E = Double.parseDouble(br.readLine());
+
+            sb.append("#").append(test_case).append(" ").append(Math.round(ans * E)).append("\n");
+        }
+        System.out.print(sb);
+    }
+
+    static void make() {
+        for (int i = 0; i < V; i++) {
+            parent[i] = i;
+        }
+    }
+
+    static int find(int a) {
+        if (parent[a] == a) return a;
+        parent[a] = find(parent[a]);
+        return parent[a];
+    }
+
+    static boolean union(int a, int b) {
+        int rootA = find(a);
+        int rootB = find(b);
+        if (rootA == rootB) return false; // union 불가
+
+        // 한 쪽으로 치우치는 걸 방지하는 요소
+        if (rootA > rootB) parent[rootB] = rootA;
+        else parent[rootA] = rootB;
+        return true;
+    }
+}
